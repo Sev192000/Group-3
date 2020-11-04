@@ -1,5 +1,5 @@
 import statistics as s
-student_and_grade = {"Martina": 5.35, "Bastien": 5.07, "Claire": 3.53, "Anna":
+students_and_grades = {"Martina": 5.35, "Bastien": 5.07, "Claire": 3.53, "Anna":
                     4.09, "Maria": 4.55, "Kim": 3.98,"Robin": 3.87, "Adriana": 5.20, "Kristina":
                     5.33, "Michael": 4.52, "Sophie": 4.54, "Sara": 4.94,"Olof": 4.61, "Tina": 5.74,
                     "Hanna": 4.42, "Mirsa": 5.55, "Sanna": 4.99, "Sally": 4.34,"Urban": 4.11,
