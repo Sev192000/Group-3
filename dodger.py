@@ -14,6 +14,8 @@ ADDNEWBADDIERATE = 6 #taux/vitesse ajout des méchants
 PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
 
 #COUCOU LES BGS
+#hola chica
+
 
 def terminate():
     pygame.quit()
