@@ -18,3 +18,4 @@ for name, grade in student_and_grade.items():
 
 print(grade_average)
 print(len(students_above_avg))
+print(len(student_and_grade))

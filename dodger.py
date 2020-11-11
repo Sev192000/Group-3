@@ -1,19 +1,19 @@
 import pygame, random, sys
 from pygame.locals import *
 
-WINDOWWIDTH = 600
-WINDOWHEIGHT = 600
-TEXTCOLOR = (0,0,0)
-BACKGROUNDCOLOR = (255, 255, 255)
-FPS = 60
-BADDIEMINSIZE = 10
-BADDIEMAXSIZE = 40
-BADDIEMINSPEED = 1
-BADDIEMAXSPEED = 8
-ADDNEWBADDIERATE = 6
-PLAYERMOVERATE = 5
+WINDOWWIDTH = 600 #largeur fenêtre de jeu
+WINDOWHEIGHT = 600 #longeur fenêtre
+TEXTCOLOR = (0,0,0) #couleur du texte
+BACKGROUNDCOLOR = (255, 255, 255) #couleur du fond
+FPS = 60 #images par seconde
+BADDIEMINSIZE = 10 #taille min des méchants
+BADDIEMAXSIZE = 40 #taille max des méchants
+BADDIEMINSPEED = 1 #vitesse min des méchants
+BADDIEMAXSPEED = 8 #vitesse max des méchants
+ADDNEWBADDIERATE = 6 #taux/vitesse ajout des méchants
+PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
 
-print("hello")
+#COUCOU LES BGS 
 
 def terminate():
     pygame.quit()
