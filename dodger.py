@@ -4,7 +4,7 @@ from pygame.locals import *
 WINDOWWIDTH = 600 #largeur fenêtre de jeu
 WINDOWHEIGHT = 600 #longeur fenêtre
 TEXTCOLOR = (0,0,0) #couleur du texte
-BACKGROUNDCOLOR = (255, 255, 255) #couleur du fond
+BACKGROUNDCOLOR = (200, 255, 255) #couleur du fond
 FPS = 60 #images par seconde
 BADDIEMINSIZE = 10 #taille min des méchants
 BADDIEMAXSIZE = 40 #taille max des méchants
