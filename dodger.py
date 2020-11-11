@@ -56,7 +56,7 @@ pygame.mixer.music.load('background.mid')
 # Set up images.
 playerImage = pygame.image.load('bol.png')
 playerRect = playerImage.get_rect()
-baddieImage = pygame.image.load('baddie.png')
+baddieImage = pygame.image.load('Bombe.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 
 # Show the "Start" screen.
