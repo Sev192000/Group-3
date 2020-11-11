@@ -51,7 +51,7 @@ font = pygame.font.SysFont('Bradley Hand ITC', 48)
 
 # Set up sounds.
 gameOverSound = pygame.mixer.Sound('gameover.wav')
-pygame.mixer.music.load('background.mid')
+pygame.mixer.music.load('VolDuBourdon.wav')
 
 # Set up images.
 playerImage = pygame.image.load('bol.png')
