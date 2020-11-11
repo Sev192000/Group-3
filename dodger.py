@@ -61,7 +61,7 @@ pastryGirl = pygame.image.load('pastrygirl.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(pastryGirl, (0,0)) #faut voir l'emplacement de la fill
+windowSurface.blit(pastryGirl, (0,0)) #faut voir l'emplacement de la fille
 drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 7), (WINDOWHEIGHT / 3))
 drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 4.5) - 30, (WINDOWHEIGHT / 3) + 50)
 pygame.display.update()
