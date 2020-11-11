@@ -13,7 +13,7 @@ BADDIEMAXSPEED = 8
 ADDNEWBADDIERATE = 6
 PLAYERMOVERATE = 5
 
-#COUCOU LES BGS
+print("hello")
 
 def terminate():
     pygame.quit()
