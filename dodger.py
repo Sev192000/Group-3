@@ -6,11 +6,11 @@ WINDOWHEIGHT = 600 #longeur fenêtre
 TEXTCOLOR = (0,0,0) #couleur du texte
 BACKGROUNDCOLOR = (200, 255, 255) #couleur du fond
 FPS = 60 #images par seconde
-BADDIEMINSIZE = 10 #taille min des méchants
+BADDIEMINSIZE = 30 #taille min des méchants
 BADDIEMAXSIZE = 40 #taille max des méchants
 BADDIEMINSPEED = 1 #vitesse min des méchants
 BADDIEMAXSPEED = 8 #vitesse max des méchants
-ADDNEWBADDIERATE = 6 #taux/vitesse ajout des méchants
+ADDNEWBADDIERATE = 100 #taux/vitesse ajout des méchants
 PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
 
 def terminate(): #fin du jeu
