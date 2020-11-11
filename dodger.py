@@ -3,7 +3,7 @@ from pygame.locals import *
 
 WINDOWWIDTH = 600
 WINDOWHEIGHT = 600
-TEXTCOLOR = (0, 0, 0)
+TEXTCOLOR = (0,0,0)
 BACKGROUNDCOLOR = (255, 255, 255)
 FPS = 60
 BADDIEMINSIZE = 10
@@ -12,6 +12,8 @@ BADDIEMINSPEED = 1
 BADDIEMAXSPEED = 8
 ADDNEWBADDIERATE = 6
 PLAYERMOVERATE = 5 # a new baddie will be added to the top of the window
+
+print("hello")
 
 def terminate():
     pygame.quit()
