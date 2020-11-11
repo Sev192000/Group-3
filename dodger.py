@@ -193,8 +193,8 @@ while True:
     pygame.mixer.music.stop()
     gameOverSound.play()
 
-    drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3))
-    drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 5) - 80, (WINDOWHEIGHT / 3) + 50)
+    drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
+    drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
     pygame.display.update()
     waitForPlayerToPressKey()
 
