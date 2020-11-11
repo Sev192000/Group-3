@@ -33,7 +33,7 @@ def playerHasHitBaddie(playerRect, baddies):
             return True
     return False
 
-def drawText(text, font, surface, x, y):
+def drawText(text, font,surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
@@ -47,7 +47,7 @@ pygame.display.set_caption('Dodger')
 pygame.mouse.set_visible(False)
 
 # Set up the fonts.
-font = pygame.font.SysFont(None, 48)
+font = pygame.font.SysFont('Bradley Hand ITC', 48)
 
 # Set up sounds.
 gameOverSound = pygame.mixer.Sound('gameover.wav')
@@ -60,7 +60,7 @@ baddieImage = pygame.image.load('baddie.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-drawText('Running pastry chef', font, windowSurface, (WINDOWWIDTH / 4.4), (WINDOWHEIGHT / 3))
+drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 4.4), (WINDOWHEIGHT / 3))
 drawText('Press a key to start.', font, windowSurface, (WINDOWWIDTH / 3.5) - 30, (WINDOWHEIGHT / 3) + 50)
 pygame.display.update()
 waitForPlayerToPressKey()
