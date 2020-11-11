@@ -11,7 +11,7 @@ BADDIEMAXSIZE = 40
 BADDIEMINSPEED = 1
 BADDIEMAXSPEED = 8
 ADDNEWBADDIERATE = 6
-PLAYERMOVERATE = 5
+PLAYERMOVERATE = 5 # a new baddie will be added to the top of the window
 
 def terminate():
     pygame.quit()
