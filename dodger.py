@@ -60,7 +60,7 @@ baddieImage = pygame.image.load('baddie.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-drawText('Running pastry chef', font, windowSurface, (WINDOWWIDTH / 3.6), (WINDOWHEIGHT / 3))
+drawText('Running pastry chef', font, windowSurface, (WINDOWWIDTH / 3.7), (WINDOWHEIGHT / 3))
 drawText('Press a key to start.', font, windowSurface, (WINDOWWIDTH / 3) - 30, (WINDOWHEIGHT / 3) + 50)
 pygame.display.update()
 waitForPlayerToPressKey()
