@@ -1,4 +1,4 @@
-import pygame, random, sys # coucou
+import pygame, random, sys
 from pygame.locals import *
 
 WINDOWWIDTH = 600 #largeur fenêtre de jeu
@@ -12,10 +12,6 @@ BADDIEMINSPEED = 1 #vitesse min des méchants
 BADDIEMAXSPEED = 8 #vitesse max des méchants
 ADDNEWBADDIERATE = 6 #taux/vitesse ajout des méchants
 PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
-
-#COUCOU LES BGS
-#hola chica
-
 
 def terminate():
     pygame.quit()
