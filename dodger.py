@@ -57,9 +57,11 @@ pygame.mixer.music.load('background.mid')
 playerImage = pygame.image.load('bol.png')
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('baddie.png')
+pastryGirlL = pygame.image.load('pastrygirl.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
+windowSurface.blit(pastryGirlL, (0,0))
 drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 7), (WINDOWHEIGHT / 3))
 drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 4.5) - 30, (WINDOWHEIGHT / 3) + 50)
 pygame.display.update()
