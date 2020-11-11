@@ -47,7 +47,7 @@ pygame.display.set_caption('Dodger')
 pygame.mouse.set_visible(False)
 
 # Set up the fonts.
-font = pygame.font.SysFont('Bradley Hand ITC', 48)
+font = pygame.font.SysFont('Bradley Hand ITC', 37)
 
 # Set up sounds.
 gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
@@ -58,12 +58,14 @@ playerImage = pygame.image.load('bol.png')
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('Bombe.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
+textbubble = pygame.image.load('textbubble.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(pastryGirl, (50,350)) #faut voir l'emplacement de la fille
-drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 7), (WINDOWHEIGHT / 5))
-drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 4.5) - 30, (WINDOWHEIGHT / 5) + 70)
+windowSurface.blit(pastryGirl, (30,360)) #faut voir l'emplacement de la fille
+windowSurface.blit(textbubble, (120,100))
+drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3.3))
+drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 2.9) - 30, (WINDOWHEIGHT / 3.5) + 70)
 pygame.display.update()
 waitForPlayerToPressKey()
 
