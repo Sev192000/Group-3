@@ -77,7 +77,7 @@ while True:
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
-        score += 1 # Increase score.
+        score += 0 # Increase score.
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -120,10 +120,6 @@ while True:
                 if event.key == K_DOWN or event.key == K_s:
                     moveDown = False
 
-            if event.type == MOUSEMOTION:
-                # If the mouse moves, move the player where to the cursor.
-                playerRect.centerx = event.pos[0]
-                playerRect.centery = event.pos[1]
         # Add new baddies at the top of the screen, if needed.
         if not reverseCheat and not slowCheat:
             baddieAddCounter += 1
@@ -181,7 +177,7 @@ while True:
         if playerHasHitBaddie(playerRect, baddies):
             if score > topScore:
                 topScore = score # set new top score
-            break
+            score =score+1
 
         mainClock.tick(FPS)
 
