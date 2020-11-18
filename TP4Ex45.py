@@ -25,10 +25,10 @@ window = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Fruit Catcher")
 
 # IMAGES
-basket_img = pygame.image.load('basket.png')
+basket_img = pygame.image.load('bol.png')
 basket_img = pygame.transform.scale(basket_img, (150, 100))
-bg = pygame.image.load('background.jpg')
-bomb_img = pygame.image.load('bomb.png')
+bg = pygame.image.load('background.mid.jpg')
+bomb_img = pygame.image.load('Bombe.png')
 bomb_img = pygame.transform.scale(bomb_img, (100, 100))
 
 clock = pygame.time.Clock()
@@ -55,7 +55,7 @@ class Fruits(object):
 
     def draw(self, window):
         if self.f_type == 0:
-            fruit = pygame.image.load('strawberry.png')
+            fruit = pygame.image.load('chocolate.png')
             self.vel = 10
         fruit = pygame.transform.scale(fruit, (100, 100))
         window.blit(fruit, (self.x, self.y))
