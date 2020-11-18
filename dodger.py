@@ -237,6 +237,10 @@ while True:
                 topScore = score # set new top score
             score = score + 1
 
+        for g in goodies[:]:
+            if playerHasHitGoodie(playerRect, goodies):
+                goodies.remove(g)
+
         mainClock.tick(FPS)
 
     # Stop the game and show the "Game Over" screen.
