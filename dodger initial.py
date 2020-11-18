@@ -179,7 +179,8 @@ while True:
             if score > topScore:
                 topScore = score # set new top score
             score = score+1
-            for b in baddies[:]:
+        for b in baddies[:]:
+            if playerHasHitBaddie(playerRect, baddies):
                 baddies.remove(b)
 
         mainClock.tick(FPS)
