@@ -12,6 +12,8 @@ BADDIEMINSPEED = 1 #vitesse min des méchants
 BADDIEMAXSPEED = 8 #vitesse max des méchants
 ADDNEWBADDIERATE = 100 #taux/vitesse ajout des méchants
 PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
+GOODIEMINSIZE = 15
+GOODIEMAXSIZE = 30
 
 def terminate(): #fin du jeu
     pygame.quit()
