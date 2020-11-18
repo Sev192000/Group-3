@@ -59,6 +59,7 @@ playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('Bombe.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 textbubble = pygame.image.load('textbubble.png')
+mushroom = pygame.image.load('mushroom.jpg')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
