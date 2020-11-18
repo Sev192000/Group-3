@@ -74,7 +74,7 @@ textbubble = pygame.image.load('textbubble.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(pastryGirl, (30,360)) #faut voir l'emplacement de la fille
+windowSurface.blit(pastryGirl, (30,360)) # faut voir l'emplacement de la fille
 windowSurface.blit(textbubble, (120,100))
 drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3.3))
 drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 2.9) - 30, (WINDOWHEIGHT / 3.5) + 70)
@@ -145,7 +145,6 @@ while True:
         # Add new baddies and goodies at the top of the screen, if needed.
         if not reverseCheat and not slowCheat:
             baddieAddCounter += 1
-            goodieAddCounter += 1
         if baddieAddCounter == ADDNEWBADDIERATE:
             baddieAddCounter = 0
             baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
@@ -156,13 +155,15 @@ while True:
 
             baddies.append(newBaddie)
 
+        if not reverseCheat and not slowCheat:
+            goodieAddCounter += 1
         if goodieAddCounter == ADDNEWGOODIERATE:
             goodieAddCounter = 0
             goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
             newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
                                              goodieSize),
                          'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
-                         'surface': pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
+                         'surface': pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
                          }
 
             goodies.append(newGoodie)
