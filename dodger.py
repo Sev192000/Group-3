@@ -224,7 +224,7 @@ while True:
 
         # Draw each goodie.
         for g in goodies:
-            windowSurface.blit(b['surface'], b['rect'])
+            windowSurface.blit(g['surface'], g['rect'])
 
         pygame.display.update()
 
