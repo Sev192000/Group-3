@@ -27,7 +27,7 @@ pygame.display.set_caption("Fruit Catcher")
 # IMAGES
 basket_img = pygame.image.load('bol.png')
 basket_img = pygame.transform.scale(basket_img, (150, 100))
-bg = pygame.image.load('background.mid.jpg')
+bg = pygame.image.load('pastrygirl.png')
 bomb_img = pygame.image.load('Bombe.png')
 bomb_img = pygame.transform.scale(bomb_img, (100, 100))
 
