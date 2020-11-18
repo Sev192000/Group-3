@@ -68,10 +68,9 @@ pygame.mixer.music.load('VolDuBourdon.wav')
 playerImage = pygame.image.load('bol.png')
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('Bombe.png')
-chocolateImage = pygame.image.load('chocolate.png')
+goodieImage = pygame.image.load('chocolate.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 textbubble = pygame.image.load('textbubble.png')
-
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
