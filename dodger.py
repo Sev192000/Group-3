@@ -38,6 +38,12 @@ def playerHasHitBaddie(playerRect, baddies):
             return True
     return False
 
+def playerHasHitGoodie(playerRect, goodies):
+    for g in goodies:
+        if playerRect.colliderect(g['rect']):
+            return True
+    return False
+
 def drawText(text, font,surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
     textrect = textobj.get_rect()
@@ -80,11 +86,13 @@ topScore = 0
 while True:
     # Set up the start of the game.
     baddies = []
+    goodies = []
     score = 0
     playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
     moveLeft = moveRight = moveUp = moveDown = False
     reverseCheat = slowCheat = False
     baddieAddCounter = 0
+    goodieAddCounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
@@ -135,9 +143,10 @@ while True:
                 # If the mouse moves, move the player where to the cursor.
                 playerRect.centerx = event.pos[0]
                 playerRect.centery = event.pos[1]
-        # Add new baddies at the top of the screen, if needed.
+        # Add new baddies and goodies at the top of the screen, if needed.
         if not reverseCheat and not slowCheat:
             baddieAddCounter += 1
+            goodieAddCounter += 1
         if baddieAddCounter == ADDNEWBADDIERATE:
             baddieAddCounter = 0
             baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
@@ -147,6 +156,17 @@ while True:
                         }
 
             baddies.append(newBaddie)
+
+        if goodieAddCounter == ADDNEWGOODIERATE:
+            goodieAddCounter = 0
+            goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
+            newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
+                                             goodieSize),
+                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
+                         'surface': pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
+                         }
+
+            goodies.append(newGoodie)
 
         # Move the player around.
         if moveLeft and playerRect.left > 0:
