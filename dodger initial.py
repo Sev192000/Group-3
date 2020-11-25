@@ -28,7 +28,7 @@ def waitForPlayerToPressKey():
                     terminate()
                 return
 
-def playerHasHitBaddie(playerRect, goodies):
+def playerHasHitGoodie(playerRect, goodies):
     for g in goodies:
         if playerRect.colliderect(g['rect']):
             return True
@@ -175,7 +175,7 @@ while True:
         pygame.display.update()
 
         # Check if any of the baddies have hit the player.
-        if playerHasHitBaddie(playerRect, goodies):
+        if playerHasHitGoodie(playerRect, goodies):
             if score > topScore:
                 topScore = score # set new top score
             score = score+1
