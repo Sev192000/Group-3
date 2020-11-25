@@ -71,6 +71,7 @@ baddieImage = pygame.image.load('Bombe.png')
 goodieImage = pygame.image.load('chocolate.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 textbubble = pygame.image.load('textbubble.png')
+BigCake = pygame.image.load('BigCake.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -95,7 +96,6 @@ while True:
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
-         # Increase score.
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -226,7 +226,7 @@ while True:
 
         # Check if any of the baddies have hit the player.
         if playerHasHitBaddie(playerRect, baddies):
-            if score >= topScore:
+            if score > topScore:
                 topScore = score # set new top score
             break
 
