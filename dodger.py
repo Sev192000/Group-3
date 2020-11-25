@@ -95,7 +95,7 @@ while True:
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
-        score += 1 # Increase score.
+         # Increase score.
 
         for event in pygame.event.get():
             if event.type == QUIT:
