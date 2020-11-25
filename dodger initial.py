@@ -127,12 +127,12 @@ while True:
         if GoodieAddcounter == ADDNEWBADDIERATE:
             GoodieAddcounter = 0
             goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
+            newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
                         'surface':pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
-                        }
+                         }
 
-            baddies.append(newBaddie)
+            baddies.append(newGoodie)
 
         # Move the player around.
         if moveLeft and playerRect.left > 0:
