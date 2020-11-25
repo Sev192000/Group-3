@@ -71,6 +71,9 @@ baddieImage = pygame.image.load('Bombe.png')
 goodieImage = pygame.image.load('chocolate.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 textbubble = pygame.image.load('textbubble.png')
+BigCake = pygame.image.load('BigCake.png')
+MediumCake = pygame.image.load('MediumCake.png')
+SmallCake = pygame.image.load('SmallCake.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -226,7 +229,7 @@ while True:
         # Check if any of the baddies have hit the player.
         if playerHasHitBaddie(playerRect, baddies):
             if score > topScore:
-                topScore = score  # set new top score
+                topScore = score # set new top score
             break
 
         mainClock.tick(FPS)
@@ -249,20 +252,11 @@ while True:
 
     drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
     drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
-    if score <= 5:
-        windowSurface.blit(pastryGirl, (30,360))
-    if score >5:
-        if score<10:
-            windowSurface.blit(baddieImage, (30, 360))
-    if score >=10:
-        windowSurface.blit(pastryGirl, (30, 360))
-
-
     pygame.display.update()
     waitForPlayerToPressKey()
+
     gameOverSound.stop()
 
-#TODO corriger le score : enlever le score liés aux baddies, juste lié aux goodies
 #TODO chocolat qui clignote
 
 #TODO ajouter les autres images de goodies
