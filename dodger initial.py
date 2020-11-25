@@ -126,10 +126,10 @@ while True:
             GoodieAddcounter += 1
         if GoodieAddcounter == ADDNEWGOODIERATE:
             GoodieAddcounter = 0
-            goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
+            baddieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
+            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
-                        'surface':pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
+                        'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
                         }
 
             goodies.append(newGoodie)
