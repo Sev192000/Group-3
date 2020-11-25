@@ -13,6 +13,11 @@ GOODIEMINSPEED = 1
 GOODIEMAXSPEED = 8
 ADDNEWGOODIERATE = 6
 PLAYERMOVERATE = 5
+BADDIEMINSIZE = 30 #taille min des méchants
+BADDIEMAXSIZE = 40 #taille max des méchants
+BADDIEMINSPEED = 1 #vitesse min des méchants
+BADDIEMAXSPEED = 8 #vitesse max des méchants
+ADDNEWBADDIERATE = 100
 
 def terminate():
     pygame.quit()
@@ -31,6 +36,12 @@ def waitForPlayerToPressKey():
 def playerHasHitGoodie(playerRect, goodies):
     for g in goodies:
         if playerRect.colliderect(g['rect']):
+            return True
+    return False
+
+def playerHasHitBaddie(playerRect, baddies):
+    for b in baddies:
+        if playerRect.colliderect(b['rect']):
             return True
     return False
 
@@ -58,6 +69,7 @@ pygame.mixer.music.load('background.mid')
 playerImage = pygame.image.load('player.png')
 playerRect = playerImage.get_rect()
 goodieImage = pygame.image.load('chocolate.png')
+baddieImage = pygame.image.load('Bombe.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -70,11 +82,13 @@ topScore = 0
 while True:
     # Set up the start of the game.
     goodies = []
+    baddies = []
     score = 0
     playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
     moveLeft = moveRight = moveUp = moveDown = False
     reverseCheat = slowCheat = False
     GoodieAddcounter = 0
+    baddieAddCounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
@@ -134,6 +148,18 @@ while True:
 
             goodies.append(newGoodie)
 
+        if not reverseCheat and not slowCheat:
+            baddieAddCounter += 1
+        if baddieAddCounter == ADDNEWBADDIERATE:
+            baddieAddCounter = 0
+            baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
+            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
+                        'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
+                        'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
+                        }
+
+            baddies.append(newBaddie)
+
         # Move the player around.
         if moveLeft and playerRect.left > 0:
             playerRect.move_ip(-1 * PLAYERMOVERATE, 0)
@@ -153,10 +179,24 @@ while True:
             elif slowCheat:
                 g['rect'].move_ip(0, 1)
 
+        # Move the baddies down.
+        for b in baddies:
+            if not reverseCheat and not slowCheat:
+                b['rect'].move_ip(0, b['speed'])
+            elif reverseCheat:
+                b['rect'].move_ip(0, -5)
+            elif slowCheat:
+                b['rect'].move_ip(0, 1)
+
         # Delete baddies that have fallen past the bottom.
         for g in goodies[:]:
             if g['rect'].top > WINDOWHEIGHT:
                 goodies.remove(g)
+
+        # Delete baddies that have fallen past the bottom.
+        for b in baddies[:]:
+            if b['rect'].top > WINDOWHEIGHT:
+                baddies.remove(b)
 
         # Draw the game world on the window.
         windowSurface.fill(BACKGROUNDCOLOR)
@@ -174,6 +214,11 @@ while True:
 
         pygame.display.update()
 
+        for b in baddies:
+            windowSurface.blit(b['surface'], b['rect'])
+
+        pygame.display.update()
+
         # Check if any of the baddies have hit the player.
         if playerHasHitGoodie(playerRect, goodies):
             if score > topScore:
@@ -182,6 +227,14 @@ while True:
         for g in goodies:
             if playerRect.colliderect(g['rect']):
                 goodies.remove(g)
+
+        mainClock.tick(FPS)
+
+        for b in baddies:
+            if playerRect.colliderect(b['rect']):
+                if score > topScore:
+                    topScore = score # set new top score
+                break
 
         mainClock.tick(FPS)
 
