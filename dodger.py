@@ -95,7 +95,6 @@ while True:
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
-         # Increase score.
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -226,8 +225,8 @@ while True:
 
         # Check if any of the baddies have hit the player.
         if playerHasHitBaddie(playerRect, baddies):
-            if score >= topScore:
-                topScore = score # set new top score
+            if score > topScore:
+                topScore = score  # set new top score
             break
 
         mainClock.tick(FPS)
@@ -250,9 +249,17 @@ while True:
 
     drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
     drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
+    if score <= 5:
+        windowSurface.blit(pastryGirl, (30,360))
+    if score >5:
+        if score<10:
+            windowSurface.blit(baddieImage, (30, 360))
+    if score >=10:
+        windowSurface.blit(pastryGirl, (30, 360))
+
+
     pygame.display.update()
     waitForPlayerToPressKey()
-
     gameOverSound.stop()
 
 #TODO corriger le score : enlever le score liés aux baddies, juste lié aux goodies
