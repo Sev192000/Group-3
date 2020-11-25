@@ -12,11 +12,11 @@ BADDIEMINSPEED = 1 #vitesse min des méchants
 BADDIEMAXSPEED = 8 #vitesse max des méchants
 ADDNEWBADDIERATE = 100 #taux/vitesse ajout des méchants
 PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
-GOODIEMINSIZE = 30
+GOODIEMINSIZE = 10
 GOODIEMAXSIZE = 40
 GOODIEMINSPEED = 1
 GOODIEMAXSPEED = 8
-ADDNEWGOODIERATE = 100
+ADDNEWGOODIERATE = 6
 
 def terminate(): #fin du jeu
     pygame.quit()
@@ -49,6 +49,7 @@ def drawText(text, font,surface, x, y):
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
+
 # Set up pygame, the window, and the mouse cursor.
 pygame.init()
 mainClock = pygame.time.Clock()
@@ -90,7 +91,7 @@ while True:
     moveLeft = moveRight = moveUp = moveDown = False
     reverseCheat = slowCheat = False
     baddieAddCounter = 0
-    goodieAddCounter = 0
+    GoodieAddcounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
@@ -152,14 +153,13 @@ while True:
             baddies.append(newBaddie)
 
         if not reverseCheat and not slowCheat:
-            goodieAddCounter += 1
-        if goodieAddCounter == ADDNEWGOODIERATE:
-            goodieAddCounter = 0
+            GoodieAddcounter += 1
+        if GoodieAddcounter == ADDNEWGOODIERATE:
+            GoodieAddcounter = 0
             goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-            newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
-                                             goodieSize),
-                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
-                         'surface': pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
+            newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
+                        'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
+                        'surface':pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
                          }
 
             goodies.append(newGoodie)
@@ -230,13 +230,14 @@ while True:
                 topScore = score # set new top score
             break
 
+        mainClock.tick(FPS)
+
         # Check if any of the goodies have hit the player.
         if playerHasHitGoodie(playerRect, goodies):
             if score > topScore:
                 topScore = score # set new top score
-            score = score + 1
-
-        for g in goodies[:]:
+            score = score+1
+        for g in goodies:
             if playerRect.colliderect(g['rect']):
                 goodies.remove(g)
 
