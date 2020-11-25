@@ -255,7 +255,7 @@ while True:
 
 #TODO corriger le score : enlever le score liés aux baddies, juste lié aux goodies
 #TODO chocolat qui clignote
-#TODO plusieurs goodies qui disparaissent en même temps quand on en attrappe un
+
 #TODO ajouter les autres images de goodies
 #TODO bonus champignon
 #TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
