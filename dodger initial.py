@@ -11,7 +11,7 @@ GOODIEMINSIZE = 10
 GOODIEMAXSIZE = 40
 GOODIEMINSPEED = 1
 GOODIEMAXSPEED = 8
-ADDNEWBADDIERATE = 6
+ADDNEWGOODIERATE = 6
 PLAYERMOVERATE = 5
 
 def terminate():
@@ -124,15 +124,15 @@ while True:
         # Add new baddies at the top of the screen, if needed.
         if not reverseCheat and not slowCheat:
             GoodieAddcounter += 1
-        if GoodieAddcounter == ADDNEWBADDIERATE:
+        if GoodieAddcounter == ADDNEWGOODIERATE:
             GoodieAddcounter = 0
-            goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-            newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
+            baddieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
+            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
-                        'surface':pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
-                         }
+                        'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
+                        }
 
-            goodies.append(newGoodie)
+            baddies.append(newBaddie)
 
         # Move the player around.
         if moveLeft and playerRect.left > 0:
