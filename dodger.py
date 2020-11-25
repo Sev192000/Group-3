@@ -255,7 +255,6 @@ while True:
 
     gameOverSound.stop()
 
-#TODO corriger le score : enlever le score liés aux baddies, juste lié aux goodies
 #TODO chocolat qui clignote
 
 #TODO ajouter les autres images de goodies
