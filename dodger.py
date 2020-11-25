@@ -186,7 +186,7 @@ while True:
 
         # Move the goodies down.
         for g in goodies:
-            if not reverseCheat and not slowCheat:
+            if not reverseCheat and not slowCheat: #modifier quand on aura mis notre bonus !
                 g['rect'].move_ip(0, g['speed'])
             elif reverseCheat:
                 g['rect'].move_ip(0, -5)
@@ -237,9 +237,9 @@ while True:
                 topScore = score # set new top score
             score = score + 1
 
-        for g in goodies[:]:
+        for a in goodies[:]:
             if playerHasHitGoodie(playerRect, goodies):
-                goodies.remove(g)
+                goodies.remove(a)
 
         mainClock.tick(FPS)
 
