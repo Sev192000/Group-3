@@ -74,7 +74,7 @@ while True:
     playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
     moveLeft = moveRight = moveUp = moveDown = False
     reverseCheat = slowCheat = False
-    baddieAddCounter = 0
+    GoodieAddcounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
@@ -123,9 +123,9 @@ while True:
 
         # Add new baddies at the top of the screen, if needed.
         if not reverseCheat and not slowCheat:
-            baddieAddCounter += 1
-        if baddieAddCounter == ADDNEWBADDIERATE:
-            baddieAddCounter = 0
+            GoodieAddcounter += 1
+        if GoodieAddcounter == ADDNEWBADDIERATE:
+            GoodieAddcounter = 0
             baddieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
             newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
