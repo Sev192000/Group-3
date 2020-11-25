@@ -234,9 +234,10 @@ while True:
 
         # Check if any of the goodies have hit the player.
         if playerHasHitGoodie(playerRect, goodies):
+            score = score + 1
             if score >= topScore:
                 topScore = score # set new top score
-            score = score+1
+
         for g in goodies:
             if playerRect.colliderect(g['rect']):
                 goodies.remove(g)
