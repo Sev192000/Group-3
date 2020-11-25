@@ -9,8 +9,8 @@ BACKGROUNDCOLOR = (255, 255, 255)
 FPS = 60
 GOODIEMINSIZE = 10
 GOODIEMAXSIZE = 40
-BADDIEMINSPEED = 1
-BADDIEMAXSPEED = 8
+GOODIEMINSPEED = 1
+GOODIEMAXSPEED = 8
 ADDNEWBADDIERATE = 6
 PLAYERMOVERATE = 5
 
@@ -128,7 +128,7 @@ while True:
             baddieAddCounter = 0
             baddieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
             newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
-                        'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
+                        'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
                         'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
                         }
 
