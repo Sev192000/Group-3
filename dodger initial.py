@@ -57,7 +57,7 @@ pygame.mixer.music.load('background.mid')
 # Set up images.
 playerImage = pygame.image.load('player.png')
 playerRect = playerImage.get_rect()
-baddieImage = pygame.image.load('chocolate.png')
+goodieImage = pygame.image.load('chocolate.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -127,10 +127,10 @@ while True:
         if GoodieAddcounter == ADDNEWGOODIERATE:
             GoodieAddcounter = 0
             goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
+            newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
-                        'surface':pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
-                        }
+                        'surface':pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
+                         }
 
             goodies.append(newGoodie)
 
