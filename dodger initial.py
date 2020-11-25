@@ -145,18 +145,18 @@ while True:
             playerRect.move_ip(0, PLAYERMOVERATE)
 
         # Move the baddies down.
-        for b in goodies:
+        for g in goodies:
             if not reverseCheat and not slowCheat:
-                b['rect'].move_ip(0, b['speed'])
+                g['rect'].move_ip(0, g['speed'])
             elif reverseCheat:
-                b['rect'].move_ip(0, -5)
+                g['rect'].move_ip(0, -5)
             elif slowCheat:
-                b['rect'].move_ip(0, 1)
+                g['rect'].move_ip(0, 1)
 
         # Delete baddies that have fallen past the bottom.
-        for b in goodies[:]:
-            if b['rect'].top > WINDOWHEIGHT:
-                goodies.remove(b)
+        for g in goodies[:]:
+            if g['rect'].top > WINDOWHEIGHT:
+                goodies.remove(g)
 
         # Draw the game world on the window.
         windowSurface.fill(BACKGROUNDCOLOR)
@@ -169,8 +169,8 @@ while True:
         windowSurface.blit(playerImage, playerRect)
 
         # Draw each baddie.
-        for b in goodies:
-            windowSurface.blit(b['surface'], b['rect'])
+        for g in goodies:
+            windowSurface.blit(g['surface'], g['rect'])
 
         pygame.display.update()
 
@@ -179,9 +179,9 @@ while True:
             if score > topScore:
                 topScore = score # set new top score
             score = score+1
-        for b in goodies:
-            if playerRect.colliderect(b['rect']):
-                goodies.remove(b)
+        for g in goodies:
+            if playerRect.colliderect(g['rect']):
+                goodies.remove(g)
 
         mainClock.tick(FPS)
 
