@@ -132,7 +132,7 @@ while True:
                         'surface':pygame.transform.scale(baddieImage, (goodieSize, goodieSize)),
                          }
 
-            baddies.append(newGoodie)
+            goodies.append(newGoodie)
 
         # Move the player around.
         if moveLeft and playerRect.left > 0:
