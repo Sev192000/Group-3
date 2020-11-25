@@ -226,7 +226,7 @@ while True:
 
         # Check if any of the baddies have hit the player.
         if playerHasHitBaddie(playerRect, baddies):
-            if score > topScore:
+            if score >= topScore:
                 topScore = score # set new top score
             break
 
@@ -234,7 +234,7 @@ while True:
 
         # Check if any of the goodies have hit the player.
         if playerHasHitGoodie(playerRect, goodies):
-            if score > topScore:
+            if score >= topScore:
                 topScore = score # set new top score
             score = score+1
         for g in goodies:
