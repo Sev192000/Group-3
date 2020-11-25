@@ -49,7 +49,6 @@ def drawText(text, font,surface, x, y):
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
-
 # Set up pygame, the window, and the mouse cursor.
 pygame.init()
 mainClock = pygame.time.Clock()
@@ -238,7 +237,7 @@ while True:
             score = score + 1
 
         for g in goodies[:]:
-            if playerHasHitGoodie(playerRect, goodies):
+            if playerRect.colliderect(g['rect']):
                 goodies.remove(g)
 
         mainClock.tick(FPS)
@@ -262,4 +261,3 @@ while True:
 #TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
 
 #TODO Aajouter le compteur de vie??
-
