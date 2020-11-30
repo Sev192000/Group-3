@@ -78,20 +78,21 @@ if __name__ == "__main__":
     # Set up sounds.
     gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
     pygame.mixer.music.load('VolDuBourdon.wav')
-    goodiesImageList = list()
+    goodiesImageList = list() # added list of goodie image
     # Set up images.
     playerImage = pygame.image.load('bol.png')  # load player image
     playerRect = playerImage.get_rect()  # define the player rect
     baddieImage = pygame.image.load('Bombe.png')  # load baddie image
     goodieImage1 = pygame.image.load('chocolate.png')  # load first goodie image
     goodieImage2 = pygame.image.load('cherry.png')  # load second goodie image
-    goodieImage3 = pygame.image.load('oeuf.jpg')  # load third goodie image
+    goodieImage3 = pygame.image.load('oeuf.png')  # load third goodie image
     pastryGirl = pygame.image.load('pastrygirl.png')  # load pastry girl image
     textbubble = pygame.image.load('textbubble.png')  # load picture of text bubble
     bigCake = pygame.image.load('BigCake.png')  # load big cake image
     mediumCake = pygame.image.load('GirlMediumCake.png')  # load medium cake image
     smallCake = pygame.image.load('SmallCake.png')  # load small cake image
 
+    # append all goodie image to the list
     goodiesImageList.append(goodieImage1)
     goodiesImageList.append(goodieImage2)
     goodiesImageList.append(goodieImage3)
@@ -183,7 +184,7 @@ if __name__ == "__main__":
             if GoodieAddcounter == ADDNEWGOODIERATE:
                 GoodieAddcounter = 0
                 goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-                goodieImage = goodiesImageList[random.randint(0, len(goodiesImageList) - 1)]
+                goodieImage = goodiesImageList[random.randint(0, len(goodiesImageList) - 1)] # gets element of random index
                 newGoodie = {
                     'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
                                         goodieSize),
