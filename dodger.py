@@ -1,38 +1,41 @@
 import pygame, random, sys
 from pygame.locals import *
 
-WINDOWWIDTH = 600 # width of the game window
-WINDOWHEIGHT = 600 # height of game window
-TEXTCOLOR = (0,0,0) # color of the text
-BACKGROUNDCOLOR = (200, 255, 255) # backgroun color
-FPS = 60 # pictures per seconds
-BADDIEMINSIZE = 30 # min size of baddie
-BADDIEMAXSIZE = 40 # max size of baddie
-BADDIEMINSPEED = 1 # min speed of baddie
-BADDIEMAXSPEED = 8 # max speed of baddie
-ADDNEWBADDIERATE = 100 # speed/rate of new baddie
-PLAYERMOVERATE = 5 # speed/rate of player movement
-GOODIEMINSIZE = 30 # min size of goodie
-GOODIEMAXSIZE = 40 # max size of goodie
-GOODIEMINSPEED = 1 # min speed of goodie
-GOODIEMAXSPEED = 8 # max speed of goodie
-ADDNEWGOODIERATE = 100 # speed/rate of new goodie
+WINDOWWIDTH = 600  # width of the game window
+WINDOWHEIGHT = 600  # height of game window
+TEXTCOLOR = (0, 0, 0)  # color of the text
+BACKGROUNDCOLOR = (200, 255, 255)  # backgroun color
+FPS = 60  # pictures per seconds
+BADDIEMINSIZE = 30  # min size of baddie
+BADDIEMAXSIZE = 40  # max size of baddie
+BADDIEMINSPEED = 1  # min speed of baddie
+BADDIEMAXSPEED = 8  # max speed of baddie
+ADDNEWBADDIERATE = 100  # speed/rate of new baddie
+PLAYERMOVERATE = 5  # speed/rate of player movement
+GOODIEMINSIZE = 30  # min size of goodie
+GOODIEMAXSIZE = 40  # max size of goodie
+GOODIEMINSPEED = 1  # min speed of goodie
+GOODIEMAXSPEED = 8  # max speed of goodie
+ADDNEWGOODIERATE = 100  # speed/rate of new goodie
+
 
 # this function terminates the game
 def terminate():
     pygame.quit()
     sys.exit()
 
+
 # this function waits till the player presses a key
 def waitForPlayerToPressKey():
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                terminate() # calls the function terminate
+                terminate()  # calls the function terminate
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE: # Pressing ESC quits.
-                    terminate() # calls the function terminate
+                if event.key == K_ESCAPE:  # Pressing ESC quits.
+                    terminate()  # calls the function terminate
                 return
+
 
 # this function returns true if the player has hit a baddie
 # input parameters: playerRect, baddies
@@ -40,7 +43,7 @@ def playerHasHitBaddie(playerRect, baddies):
     for b in baddies:
         if playerRect.colliderect(b['rect']):
             return True
-    return False # returns false if the player hasn't hit a baddie
+    return False  # returns false if the player hasn't hit a baddie
 
 
 # this function returns true if the player has hit a goodie
@@ -49,15 +52,17 @@ def playerHasHitGoodie(playerRect, goodies):
     for g in goodies:
         if playerRect.colliderect(g['rect']):
             return True
-    return False # returns false if the player hasn't hit a goodie
+    return False  # returns false if the player hasn't hit a goodie
+
 
 # this function helps to visualize the text
-#input parameters: text, font, surface, x, y
+# input parameters: text, font, surface, x, y
 def drawText(text, font, surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
+
 
 if __name__ == "__main__":
     # Set up pygame, the window, and the mouse cursor.
@@ -75,21 +80,21 @@ if __name__ == "__main__":
     pygame.mixer.music.load('VolDuBourdon.wav')
 
     # Set up images.
-    playerImage = pygame.image.load('bol.png') # load player image
-    playerRect = playerImage.get_rect() # define the player rect
-    baddieImage = pygame.image.load('Bombe.png') # load baddie image
-    goodieImage = pygame.image.load('chocolate.png') #load goodie image
-    pastryGirl = pygame.image.load('pastrygirl.png') # load pastry girl image
-    textbubble = pygame.image.load('textbubble.png') # load picture of text bubble
-    bigCake = pygame.image.load('BigCake.png') # load big cake image
-    mediumCake = pygame.image.load('GirlMediumCake.png') # load medium cake image
-    smallCake = pygame.image.load('SmallCake.png') # load small cake image
+    playerImage = pygame.image.load('bol.png')  # load player image
+    playerRect = playerImage.get_rect()  # define the player rect
+    baddieImage = pygame.image.load('Bombe.png')  # load baddie image
+    goodieImage = pygame.image.load('chocolate.png')  # load goodie image
+    pastryGirl = pygame.image.load('pastrygirl.png')  # load pastry girl image
+    textbubble = pygame.image.load('textbubble.png')  # load picture of text bubble
+    bigCake = pygame.image.load('BigCake.png')  # load big cake image
+    mediumCake = pygame.image.load('GirlMediumCake.png')  # load medium cake image
+    smallCake = pygame.image.load('SmallCake.png')  # load small cake image
 
     # Show the "Start" screen.
     windowSurface.fill(BACKGROUNDCOLOR)
-    windowSurface.blit(pastryGirl, (30,360)) # faut voir l'emplacement de la fille
-    windowSurface.blit(textbubble, (120,100))
-    drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3.3))
+    windowSurface.blit(pastryGirl, (30, 360))  # faut voir l'emplacement de la fille
+    windowSurface.blit(textbubble, (120, 100))
+    drawText('Running pastry chef', font, windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3.3))
     drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 2.9) - 30, (WINDOWHEIGHT / 3.5) + 70)
     pygame.display.update()
     waitForPlayerToPressKey()
@@ -140,7 +145,7 @@ if __name__ == "__main__":
                         slowCheat = False
                         score = 0
                     if event.key == K_ESCAPE:
-                            terminate()
+                        terminate()
 
                     if event.key == K_LEFT or event.key == K_a:
                         moveLeft = False
@@ -151,17 +156,18 @@ if __name__ == "__main__":
                     if event.key == K_DOWN or event.key == K_s:
                         moveDown = False
 
-
             # Add new baddies and goodies at the top of the screen, if needed.
             if not reverseCheat and not slowCheat:
                 baddieAddCounter += 1
             if baddieAddCounter == ADDNEWBADDIERATE:
                 baddieAddCounter = 0
                 baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
-                newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
-                            'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
-                            'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
-                            }
+                newBaddie = {
+                    'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize,
+                                        baddieSize),
+                    'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
+                    'surface': pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
+                    }
 
                 baddies.append(newBaddie)
 
@@ -170,10 +176,12 @@ if __name__ == "__main__":
             if GoodieAddcounter == ADDNEWGOODIERATE:
                 GoodieAddcounter = 0
                 goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-                newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
-                            'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
-                            'surface':pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
-                            }
+                newGoodie = {
+                    'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
+                                        goodieSize),
+                    'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
+                    'surface': pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
+                    }
 
                 goodies.append(newGoodie)
 
@@ -240,7 +248,7 @@ if __name__ == "__main__":
             # Check if any of the baddies have hit the player.
             if playerHasHitBaddie(playerRect, baddies):
                 if score > topScore:
-                    topScore = score # set new top score
+                    topScore = score  # set new top score
                 break
 
             mainClock.tick(FPS)
@@ -249,7 +257,7 @@ if __name__ == "__main__":
             if playerHasHitGoodie(playerRect, goodies):
                 score = score + 1
                 if score >= topScore:
-                    topScore = score # set new top score
+                    topScore = score  # set new top score
 
             for g in goodies:
                 if playerRect.colliderect(g['rect']):
@@ -276,10 +284,10 @@ if __name__ == "__main__":
 
         gameOverSound.stop()
 
-#TODO chocolat qui clignote
+# TODO chocolat qui clignote
 
-#TODO ajouter les autres images de goodies
-#TODO bonus champignon
-#TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
+# TODO ajouter les autres images de goodies
+# TODO bonus champignon
+# TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
 
-#TODO Aajouter le compteur de vie??
+# TODO Aajouter le compteur de vie??
