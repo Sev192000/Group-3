@@ -78,17 +78,23 @@ if __name__ == "__main__":
     # Set up sounds.
     gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
     pygame.mixer.music.load('VolDuBourdon.wav')
-
+    goodiesImageList = list()
     # Set up images.
     playerImage = pygame.image.load('bol.png')  # load player image
     playerRect = playerImage.get_rect()  # define the player rect
     baddieImage = pygame.image.load('Bombe.png')  # load baddie image
-    goodieImage = pygame.image.load('chocolate.png')  # load goodie image
+    goodieImage1 = pygame.image.load('chocolate.png')  # load first goodie image
+    goodieImage2 = pygame.image.load('cherry.png')  # load second goodie image
+    goodieImage3 = pygame.image.load('oeuf.jpg')  # load third goodie image
     pastryGirl = pygame.image.load('pastrygirl.png')  # load pastry girl image
     textbubble = pygame.image.load('textbubble.png')  # load picture of text bubble
     bigCake = pygame.image.load('BigCake.png')  # load big cake image
     mediumCake = pygame.image.load('GirlMediumCake.png')  # load medium cake image
     smallCake = pygame.image.load('SmallCake.png')  # load small cake image
+
+    goodiesImageList.append(goodieImage1)
+    goodiesImageList.append(goodieImage2)
+    goodiesImageList.append(goodieImage3)
 
     # Show the "Start" screen.
     windowSurface.fill(BACKGROUNDCOLOR)
@@ -99,17 +105,17 @@ if __name__ == "__main__":
     pygame.display.update()
     waitForPlayerToPressKey()
 
-    topScore = 0
+    topScore = 0  # top score
     while True:
         # Set up the start of the game.
         baddies = []
         goodies = []
-        score = 0
+        score = 0  # score counter
         playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
         moveLeft = moveRight = moveUp = moveDown = False
         reverseCheat = slowCheat = False
-        baddieAddCounter = 0
-        GoodieAddcounter = 0
+        baddieAddCounter = 0  # counter of added baddie
+        GoodieAddcounter = 0  # counter of added goodie
         pygame.mixer.music.play(-1, 0.0)
 
         while True:
@@ -117,8 +123,9 @@ if __name__ == "__main__":
 
             for event in pygame.event.get():
                 if event.type == QUIT:
-                    terminate()
+                    terminate()  # calls the function terminate
 
+                # checks which key is pressed and moves the player to the correspond direction
                 if event.type == KEYDOWN:
                     if event.key == K_z:
                         reverseCheat = True
@@ -158,7 +165,7 @@ if __name__ == "__main__":
 
             # Add new baddies and goodies at the top of the screen, if needed.
             if not reverseCheat and not slowCheat:
-                baddieAddCounter += 1
+                baddieAddCounter += 1  # increases the counter of added baddies by 1
             if baddieAddCounter == ADDNEWBADDIERATE:
                 baddieAddCounter = 0
                 baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
@@ -167,21 +174,22 @@ if __name__ == "__main__":
                                         baddieSize),
                     'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
                     'surface': pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
-                    }
+                }
 
                 baddies.append(newBaddie)
 
             if not reverseCheat and not slowCheat:
-                GoodieAddcounter += 1
+                GoodieAddcounter += 1  # increases the counter of added goodie by 1
             if GoodieAddcounter == ADDNEWGOODIERATE:
                 GoodieAddcounter = 0
                 goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
+                goodieImage = goodiesImageList[random.randint(0, len(goodiesImageList) - 1)]
                 newGoodie = {
                     'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
                                         goodieSize),
                     'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
                     'surface': pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
-                    }
+                }
 
                 goodies.append(newGoodie)
 
