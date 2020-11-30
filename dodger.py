@@ -302,8 +302,8 @@ if __name__ == "__main__":
 
 # TODO chocolat qui clignote
 
-# TODO ajouter les autres images de goodies
 # TODO bonus champignon
+
 # TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
 
 # TODO Aajouter le compteur de vie??
