@@ -72,7 +72,7 @@ goodieImage = pygame.image.load('chocolate.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 textbubble = pygame.image.load('textbubble.png')
 BigCake = pygame.image.load('BigCake.png')
-MediumCake = pygame.image.load('MediumCake.png')
+MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('SmallCake.png')
 
 # Show the "Start" screen.
