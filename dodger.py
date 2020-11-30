@@ -83,9 +83,14 @@ if __name__ == "__main__":
     playerImage = pygame.image.load('bol.png')  # load player image
     playerRect = playerImage.get_rect()  # define the player rect
     baddieImage = pygame.image.load('Bombe.png')  # load baddie image
-    goodieImage1 = pygame.image.load('chocolate.png')  # load first goodie image
-    goodieImage2 = pygame.image.load('cherry.png')  # load second goodie image
-    goodieImage3 = pygame.image.load('oeuf.png')  # load third goodie image
+
+    # load image of goodies
+    goodieImage1 = pygame.image.load('chocolate.png')
+    goodieImage2 = pygame.image.load('cherry.png')
+    goodieImage3 = pygame.image.load('oeuf.png')
+    goodieImage4 = pygame.image.load('flour.png')
+    goodieImage5 = pygame.image.load('milk.png')
+
     pastryGirl = pygame.image.load('pastrygirl.png')  # load pastry girl image
     textbubble = pygame.image.load('textbubble.png')  # load picture of text bubble
     bigCake = pygame.image.load('BigCake.png')  # load big cake image
@@ -96,6 +101,7 @@ if __name__ == "__main__":
     goodiesImageList.append(goodieImage1)
     goodiesImageList.append(goodieImage2)
     goodiesImageList.append(goodieImage3)
+    goodiesImageList.append(goodieImage4)
 
     # Show the "Start" screen.
     windowSurface.fill(BACKGROUNDCOLOR)
