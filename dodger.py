@@ -1,50 +1,59 @@
 import pygame, random, sys
 from pygame.locals import *
 
-WINDOWWIDTH = 600 #largeur fenêtre de jeu
-WINDOWHEIGHT = 600 #longeur fenêtre
-TEXTCOLOR = (0,0,0) #couleur du texte
-BACKGROUNDCOLOR = (200, 255, 255) #couleur du fond
-FPS = 60 #images par seconde
-BADDIEMINSIZE = 30 #taille min des méchants
-BADDIEMAXSIZE = 40 #taille max des méchants
-BADDIEMINSPEED = 1 #vitesse min des méchants
-BADDIEMAXSPEED = 8 #vitesse max des méchants
-ADDNEWBADDIERATE = 100 #taux/vitesse ajout des méchants
-PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
-GOODIEMINSIZE = 30
-GOODIEMAXSIZE = 40
-GOODIEMINSPEED = 1
-GOODIEMAXSPEED = 8
-ADDNEWGOODIERATE = 100
+WINDOWWIDTH = 600 # width of the game window
+WINDOWHEIGHT = 600 # height of game window
+TEXTCOLOR = (0,0,0) # color of the text
+BACKGROUNDCOLOR = (200, 255, 255) # backgroun color
+FPS = 60 # pictures per seconds
+BADDIEMINSIZE = 30 # min size of baddie
+BADDIEMAXSIZE = 40 # max size of baddie
+BADDIEMINSPEED = 1 # min speed of baddie
+BADDIEMAXSPEED = 8 # max speed of baddie
+ADDNEWBADDIERATE = 100 # speed/rate of new baddie
+PLAYERMOVERATE = 5 # speed/rate of player movement
+GOODIEMINSIZE = 30 # min size of goodie
+GOODIEMAXSIZE = 40 # max size of goodie
+GOODIEMINSPEED = 1 # min speed of goodie
+GOODIEMAXSPEED = 8 # max speed of goodie
+ADDNEWGOODIERATE = 100 # speed/rate of new goodie
 
-def terminate(): #fin du jeu
+# this function terminates the game
+def terminate():
     pygame.quit()
     sys.exit()
 
+# this function waits till the player presses a key
 def waitForPlayerToPressKey():
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                terminate()
+                terminate() # calls the function terminate
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE: # Pressing ESC quits.
-                    terminate()
+                    terminate() # calls the function terminate
                 return
 
+# this function returns true if the player has hit a baddie
+# input parameters: playerRect, baddies
 def playerHasHitBaddie(playerRect, baddies):
     for b in baddies:
         if playerRect.colliderect(b['rect']):
             return True
-    return False
+    return False # returns false if the player hasn't hit a baddie
 
+
+# this function returns true if the player has hit a goodie
+# input parameters : playerRect, baddies
 def playerHasHitGoodie(playerRect, goodies):
     for g in goodies:
         if playerRect.colliderect(g['rect']):
             return True
-    return False
+    return False # returns false if the player hasn't hit a goodie
 
-def drawText(text, font,surface, x, y):
+# this function helps to visualize the text
+#input parameters: text, font, surface, x, y
+def drawText(text, font, surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
@@ -66,15 +75,15 @@ if __name__ == "__main__":
     pygame.mixer.music.load('VolDuBourdon.wav')
 
     # Set up images.
-    playerImage = pygame.image.load('bol.png')
-    playerRect = playerImage.get_rect()
-    baddieImage = pygame.image.load('Bombe.png')
-    goodieImage = pygame.image.load('chocolate.png')
-    pastryGirl = pygame.image.load('pastrygirl.png')
-    textbubble = pygame.image.load('textbubble.png')
-    BigCake = pygame.image.load('BigCake.png')
-    MediumCake = pygame.image.load('GirlMediumCake.png')
-    SmallCake = pygame.image.load('SmallCake.png')
+    playerImage = pygame.image.load('bol.png') # load player image
+    playerRect = playerImage.get_rect() # define the player rect
+    baddieImage = pygame.image.load('Bombe.png') # load baddie image
+    goodieImage = pygame.image.load('chocolate.png') #load goodie image
+    pastryGirl = pygame.image.load('pastrygirl.png') # load pastry girl image
+    textbubble = pygame.image.load('textbubble.png') # load picture of text bubble
+    bigCake = pygame.image.load('BigCake.png') # load big cake image
+    mediumCake = pygame.image.load('GirlMediumCake.png') # load medium cake image
+    smallCake = pygame.image.load('SmallCake.png') # load small cake image
 
     # Show the "Start" screen.
     windowSurface.fill(BACKGROUNDCOLOR)
