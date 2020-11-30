@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # Set up sounds.
     gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
     pygame.mixer.music.load('VolDuBourdon.wav')
-    goodiesImageList = list() # added list of goodie image
+    goodiesImageList = list()  # added list of goodie image
     # Set up images.
     playerImage = pygame.image.load('bol.png')  # load player image
     playerRect = playerImage.get_rect()  # define the player rect
@@ -190,7 +190,8 @@ if __name__ == "__main__":
             if GoodieAddcounter == ADDNEWGOODIERATE:
                 GoodieAddcounter = 0
                 goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
-                goodieImage = goodiesImageList[random.randint(0, len(goodiesImageList) - 1)] # gets element of random index
+                goodieImage = goodiesImageList[
+                    random.randint(0, len(goodiesImageList) - 1)]  # gets element of random index
                 newGoodie = {
                     'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize,
                                         goodieSize),
