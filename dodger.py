@@ -311,6 +311,7 @@ if __name__ == "__main__":
         if score == 0:
             noPointsResized = pygame.transform.scale(noPoints, (240, 160))
             windowSurface.blit(noPointsResized, (180, 360))
+            # TODO Add text: "nice try, maybe next time" or smt like that
         elif score <= 5 and score != 0:
             smallScoreResized = pygame.transform.scale(smallScore, (240, 160))
             windowSurface.blit(smallScoreResized, (180, 360))
