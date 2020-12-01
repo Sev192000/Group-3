@@ -282,8 +282,12 @@ if __name__ == "__main__":
             # Check if any of the goodies have hit the player.
             if playerHasHitGoodie(playerRect, goodies):
                 score = score + 1
-                if score >= topScore:
+                if score > topScore:
+                    topScore = score
+                    highScore = topScore
+                elif score == topScore:
                     topScore = score  # set new top score
+                    highScore = 0
 
             for g in goodies:
                 if playerRect.colliderect(g['rect']):
@@ -298,7 +302,7 @@ if __name__ == "__main__":
         drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
         #visualize new high score if the player hit's the top score
-        if score == topScore and topScore != 0:
+        if score == highScore and highScore != 0:
             drawText('Congratulations! You have a new highscore!', font, windowSurface, 30, (WINDOWHEIGHT / 3.3)-20)
             highScoreResized = pygame.transform.scale(highScoreImage, (50, 60))
             windowSurface.blit(highScoreResized, (250, 90))
