@@ -4,7 +4,7 @@ from pygame.locals import *
 WINDOWWIDTH = 600  # width of the game window
 WINDOWHEIGHT = 600  # height of game window
 TEXTCOLOR = (0, 0, 0)  # color of the text
-BACKGROUNDCOLOR = (200, 255, 255)  # backgroun color
+BACKGROUNDCOLOR = (200, 255, 255)  # background color
 FPS = 60  # pictures per seconds
 BADDIEMINSIZE = 30  # min size of baddie
 BADDIEMAXSIZE = 40  # max size of baddie
@@ -93,9 +93,16 @@ if __name__ == "__main__":
 
     pastryGirl = pygame.image.load('rescources/pastrygirl.png')  # load pastry girl image
     textbubble = pygame.image.load('rescources/textbubble.png')  # load picture of text bubble
+
+    # load image for score visualization
     bigCake = pygame.image.load('rescources/BigCake.png')  # load big cake image
     mediumCake = pygame.image.load('rescources/GirlMediumCake.png')  # load medium cake image
     smallCake = pygame.image.load('rescources/SmallCake.png')  # load small cake image
+
+    noPoints = pygame.image.load('rescources/noPoints.png')
+    smallScore = pygame.image.load('rescources/smallScore.png')
+    mediumScore = pygame.image.load('rescources/mediumScore.png')
+    goodScore = pygame.image.load('rescources/goodScore.png')
 
     # append all goodie image to the list
     goodiesImageList.append(goodieImage1)
@@ -289,13 +296,19 @@ if __name__ == "__main__":
         drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
         drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
-        if score <= 5:
-            windowSurface.blit(pastryGirl, (30, 360))
-        if score > 5:
-            if score < 10:
-                windowSurface.blit(baddieImage, (30, 360))
+        if score == 0:
+            noPointsResized = pygame.transform.scale(noPoints, (240, 160))
+            windowSurface.blit(noPointsResized, (180, 360))
+        elif score <= 5 and score != 0:
+            smallScoreResized = pygame.transform.scale(smallScore, (240, 160))
+            windowSurface.blit(smallScoreResized, (180, 360))
+        if score > 5 and score < 10:
+            mediumScoreResized = pygame.transform.scale(mediumScore, (240, 160))
+            windowSurface.blit(mediumScoreResized, (180, 360))
         if score >= 10:
-            windowSurface.blit(pastryGirl, (30, 360))
+            goodScoreResized = pygame.transform.scale(goodScore, (240, 160))
+            windowSurface.blit(goodScoreResized, (180, 360))
+
         pygame.display.update()
         waitForPlayerToPressKey()
 
