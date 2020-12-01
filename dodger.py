@@ -122,7 +122,7 @@ if __name__ == "__main__":
     waitForPlayerToPressKey()
 
     topScore = 0  # top score
-    highScore = 0 # high score
+    highScore = 0  # high score
     while True:
         # Set up the start of the game.
         baddies = []
@@ -301,13 +301,13 @@ if __name__ == "__main__":
         drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
         drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
-        #visualize new high score if the player hit's the top score
+        # visualize new high score if the player hit's the top score
         if score == highScore and highScore != 0:
-            drawText('Congratulations! You have a new highscore!', font, windowSurface, 30, (WINDOWHEIGHT / 3.3)-20)
+            drawText('Congratulations! You have a new highscore!', font, windowSurface, 30, (WINDOWHEIGHT / 3.3) - 20)
             highScoreResized = pygame.transform.scale(highScoreImage, (50, 60))
             windowSurface.blit(highScoreResized, (250, 90))
 
-         # visualize score level
+        # visualize score level
         if score == 0:
             noPointsResized = pygame.transform.scale(noPoints, (240, 160))
             windowSurface.blit(noPointsResized, (180, 360))
