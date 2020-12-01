@@ -76,32 +76,33 @@ if __name__ == "__main__":
     font = pygame.font.SysFont('Bradley Hand ITC', 37)
 
     # Set up sounds.
-    gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
-    pygame.mixer.music.load('VolDuBourdon.wav')
+    gameOverSound = pygame.mixer.Sound('rescources/ExplosionSound.wav')
+    pygame.mixer.music.load('rescources/VolDuBourdon.wav')
     goodiesImageList = list()  # added list of goodie image
     # Set up images.
-    playerImage = pygame.image.load('bol.png')  # load player image
+    playerImage = pygame.image.load('rescources/bol.png')  # load player image
     playerRect = playerImage.get_rect()  # define the player rect
-    baddieImage = pygame.image.load('Bombe.png')  # load baddie image
+    baddieImage = pygame.image.load('rescources/Bombe.png')  # load baddie image
 
     # load image of goodies
-    goodieImage1 = pygame.image.load('chocolate.png')
-    goodieImage2 = pygame.image.load('cherry.png')
-    goodieImage3 = pygame.image.load('oeuf.png')
-    goodieImage4 = pygame.image.load('flour.png')
-    goodieImage5 = pygame.image.load('milk.png')
+    goodieImage1 = pygame.image.load('rescources/chocolate.png')
+    goodieImage2 = pygame.image.load('rescources/cherry.png')
+    goodieImage3 = pygame.image.load('rescources/oeuf.png')
+    goodieImage4 = pygame.image.load('rescources/flour.png')
+    goodieImage5 = pygame.image.load('rescources/milk.png')
 
-    pastryGirl = pygame.image.load('pastrygirl.png')  # load pastry girl image
-    textbubble = pygame.image.load('textbubble.png')  # load picture of text bubble
-    bigCake = pygame.image.load('BigCake.png')  # load big cake image
-    mediumCake = pygame.image.load('GirlMediumCake.png')  # load medium cake image
-    smallCake = pygame.image.load('SmallCake.png')  # load small cake image
+    pastryGirl = pygame.image.load('rescources/pastrygirl.png')  # load pastry girl image
+    textbubble = pygame.image.load('rescources/textbubble.png')  # load picture of text bubble
+    bigCake = pygame.image.load('rescources/BigCake.png')  # load big cake image
+    mediumCake = pygame.image.load('rescources/GirlMediumCake.png')  # load medium cake image
+    smallCake = pygame.image.load('rescources/SmallCake.png')  # load small cake image
 
     # append all goodie image to the list
     goodiesImageList.append(goodieImage1)
     goodiesImageList.append(goodieImage2)
     goodiesImageList.append(goodieImage3)
     goodiesImageList.append(goodieImage4)
+    goodiesImageList.append(goodieImage5)
 
     # Show the "Start" screen.
     windowSurface.fill(BACKGROUNDCOLOR)
