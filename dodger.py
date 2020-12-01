@@ -104,6 +104,7 @@ if __name__ == "__main__":
     mediumScore = pygame.image.load('rescources/mediumScore.png')
     goodScore = pygame.image.load('rescources/goodScore.png')
     highScoreImage = pygame.image.load('rescources/highScore.png')
+    noScoreImage = pygame.image.load('rescources/noScoreImage.png')
 
     # append all goodie image to the list
     goodiesImageList.append(goodieImage1)
@@ -298,8 +299,8 @@ if __name__ == "__main__":
         pygame.mixer.music.stop()
         gameOverSound.play()
 
-        drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
-        drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
+        drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3) + 20, (WINDOWHEIGHT / 2))
+        drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 40, (WINDOWHEIGHT / 3.3) + 50)
 
         # visualize new high score if the player hit's the top score
         if score == highScore and highScore != 0:
@@ -309,6 +310,9 @@ if __name__ == "__main__":
 
         # visualize score level
         if score == 0:
+            drawText('Oh no! Try your chance again!', font, windowSurface, 125, (WINDOWHEIGHT / 3.3) - 10)
+            noScore = pygame.transform.scale(noScoreImage, (50, 50))
+            windowSurface.blit(noScore, (275, 100))
             noPointsResized = pygame.transform.scale(noPoints, (240, 160))
             windowSurface.blit(noPointsResized, (180, 360))
             # TODO Add text: "nice try, maybe next time" or smt like that
