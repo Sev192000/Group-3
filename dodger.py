@@ -335,6 +335,8 @@ if __name__ == "__main__":
 
 # TODO bonus champignon
 
-# TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
-
 # TODO Aajouter le compteur de vie??
+
+# TODO diffrent bowl colors, by pressing the key r you'll get red bowl...
+
+
