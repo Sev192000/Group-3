@@ -22,7 +22,7 @@ ADDNEWGOODIERATE = 100
 
 MUSHSIZE = 40
 MUSHSPEED = 3
-ADDNEWMUSHRATE = 1000
+ADDNEWMUSHRATE = 100
 
 def terminate(): #fin du jeu
     pygame.quit()
@@ -50,8 +50,8 @@ def playerHasHitGoodie(playerRect, goodies):
             return True
     return False
 
-def playerHasHitMush(playerRect, mush):
-    for m in mush:
+def playerHasHitMush(playerRect, mushs):
+    for m in mushs:
         if playerRect.colliderect(m['rect']):
             return True
     return False
@@ -105,7 +105,7 @@ while True:
     # Set up the start of the game.
     baddies = []
     goodies = []
-    mush =[]
+    mushs =[]
     score = 0
     playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
     moveLeft = moveRight = moveUp = moveDown = False
@@ -189,13 +189,13 @@ while True:
             MushAddcounter += 1
         if MushAddcounter == ADDNEWMUSHRATE:
             MushAddcounter = 0
-            mushSize = random.randint(MUSHMINSIZE, MUSHMAXSIZE)
+            mushSize = MUSHSIZE
             newMush = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - mushSize), 0 - mushSize, mushSize, mushSize),
                         'speed': MUSHSPEED,
-                        'surface':pygame.transform.scale(goodieImage, (mushSize, mushSize)),
+                        'surface':pygame.transform.scale(mushroom, (mushSize, mushSize)),
                          }
 
-            mush.append(newMush)
+            mushs.append(newMush)
 
         # Move the player around.
         if moveLeft and playerRect.left > 0:
@@ -225,6 +225,16 @@ while True:
             elif slowCheat:
                 g['rect'].move_ip(0, 1)
 
+        # Move the mush down.
+        for m in mushs:
+            if not reverseCheat and not slowCheat:
+                m['rect'].move_ip(0, m['speed'])
+            elif reverseCheat:
+                m['rect'].move_ip(0, -5)
+            elif slowCheat:
+                m['rect'].move_ip(0, 1)
+
+
         # Delete baddies that have fallen past the bottom.
         for b in baddies[:]:
             if b['rect'].top > WINDOWHEIGHT:
@@ -234,6 +244,11 @@ while True:
         for g in goodies[:]:
             if g['rect'].top > WINDOWHEIGHT:
                 goodies.remove(g)
+
+        # Delete mushs that have fallen past the bottom.
+        for m in mushs[:]:
+            if m['rect'].top > WINDOWHEIGHT:
+                mushs.remove(m)
 
         # Draw the game world on the window.
         windowSurface.fill(BACKGROUNDCOLOR)
@@ -257,6 +272,12 @@ while True:
 
         pygame.display.update()
 
+        # Draw each mush.
+        for m in mushs:
+            windowSurface.blit(m['surface'], m['rect'])
+
+        pygame.display.update()
+
         # Check if any of the baddies have hit the player.
         if playerHasHitBaddie(playerRect, baddies):
             if score > topScore:
@@ -274,6 +295,18 @@ while True:
         for g in goodies:
             if playerRect.colliderect(g['rect']):
                 goodies.remove(g)
+
+        mainClock.tick(FPS)
+
+        # Check if any of the goodies have hit the player.
+        if playerHasHitGoodie(playerRect, mushs):
+            score = score + 1000
+            if score >= topScore:
+                topScore = score # set new top score
+
+        for m in mushs:
+            if playerRect.colliderect(m['rect']):
+                mushs.remove(m)
 
         mainClock.tick(FPS)
 
