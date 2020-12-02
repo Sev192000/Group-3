@@ -71,7 +71,7 @@ pygame.display.set_caption('Dodger')
 pygame.mouse.set_visible(False)
 
 # Set up the fonts.
-font = pygame.font.SysFont('Bradley Hand ITC', 37)
+font = pygame.font.SysFont('Berlin Sans FB', 37)
 
 # Set up sounds.
 gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
