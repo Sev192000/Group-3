@@ -74,11 +74,13 @@ textbubble = pygame.image.load('textbubble.png')
 BigCake = pygame.image.load('BigCake.png')
 MediumCake = pygame.image.load('MediumCake.png')
 SmallCake = pygame.image.load('SmallCake.png')
-ImageDAccueil = pygame.image.load('ImageDAccueil.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(ImageDAccueil, (0,0)) # faut voir l'emplacement de la fille
+windowSurface.blit(pastryGirl, (30,360)) # faut voir l'emplacement de la fille
+windowSurface.blit(textbubble, (120,100))
+drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3.3))
+drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 2.9) - 30, (WINDOWHEIGHT / 3.5) + 70)
 pygame.display.update()
 waitForPlayerToPressKey()
 
@@ -248,7 +250,7 @@ while True:
     pygame.mixer.music.stop()
     gameOverSound.play()
 
-    drawText('OHOH! You lost', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
+    drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
     drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
     if score <= 5:
