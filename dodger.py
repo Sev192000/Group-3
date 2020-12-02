@@ -180,7 +180,7 @@ while True:
 
             baddies.append(newBaddie)
 
-        if not reverseCheat :
+        if not reverseCheat:
             GoodieAddcounter += 1
         if GoodieAddcounter == ADDNEWGOODIERATE:
             GoodieAddcounter = 0
@@ -331,7 +331,7 @@ while True:
         if score < 10:
             windowSurface.blit(EndMediumCake, (-30, 0))
     if score >= 10:
-        windowSurface.blit(EndBigCake, (-48, 0))
+        windowSurface.blit(EndBigCake, (0, 0))
     pygame.display.update()
     waitForPlayerToPressKey()
 
