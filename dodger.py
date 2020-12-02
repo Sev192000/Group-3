@@ -92,7 +92,7 @@ textbubble = pygame.image.load('textbubble.png')
 BigCake = pygame.image.load('GirlBigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('GirlSmallCake.png')
-himage = pygame.image.load('imagedb.png')
+HomeImage = pygame.image.load('imagedb.png')
 GoodiesImageList = (chocolate,flour,milk,egg,cherry)
 EndSmallCake = pygame.image.load('EndSmallCake.png')
 EndMediumCake = pygame.image.load('EndMediumCake.png')
@@ -100,7 +100,7 @@ EndBigCake = pygame.image.load('EndBigCake.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(himage, (0,0)) # faut voir l'emplacement
+windowSurface.blit(HomeImage, (0,0)) # faut voir l'emplacement
 pygame.display.update()
 waitForPlayerToPressKey()
 
