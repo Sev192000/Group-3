@@ -20,10 +20,10 @@ GOODIEMINSPEED = 1
 GOODIEMAXSPEED = 8
 ADDNEWGOODIERATE = 100
 
-MUSHMINSIZE = 30
+MUSHMINSIZE = 40
 MUSHMAXSIZE = 40
 MUSHMINSPEED = 1
-MUSHMAXSPEED = 8
+MUSHMAXSPEED = 3
 ADDNEWMUSHRATE = 100
 
 def terminate(): #fin du jeu
@@ -52,7 +52,11 @@ def playerHasHitGoodie(playerRect, goodies):
             return True
     return False
 
-
+def playerHasHitMush(playerRect, mush):
+    for m in mush:
+        if playerRect.colliderect(m['rect']):
+            return True
+    return False
 
 def drawText(text, font,surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
