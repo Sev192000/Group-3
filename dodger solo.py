@@ -51,13 +51,13 @@ pygame.mouse.set_visible(False)
 font = pygame.font.SysFont(None, 48)
 
 # Set up sounds.
-gameOverSound = pygame.mixer.Sound('rescources/gameover.wav')
-pygame.mixer.music.load('rescources/background.mid')
+gameOverSound = pygame.mixer.Sound('resources/gameover.wav')
+pygame.mixer.music.load('resources/background.mid')
 
 # Set up images.
-playerImage = pygame.image.load('rescources/player.png')
+playerImage = pygame.image.load('resources/player.png')
 playerRect = playerImage.get_rect()
-goodieImage = pygame.image.load('rescources/chocolate.png')
+goodieImage = pygame.image.load('resources/chocolate.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
