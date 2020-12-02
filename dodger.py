@@ -101,7 +101,7 @@ Instructions = pygame.image.load('Instructions.png')
 
 # Show instructions
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(Instructions, (0,0)) # faut voir l'emplacement
+windowSurface.blit(Instructions, (-15,0)) # faut voir l'emplacement
 pygame.display.update()
 waitForPlayerToPressKey()
 
