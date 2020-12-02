@@ -164,7 +164,7 @@ while True:
 
 
         # Add new baddies and goodies at the top of the screen, if needed.
-        if not reverseCheat and not slowCheat:
+        if not reverseCheat:
             baddieAddCounter += 1
         if baddieAddCounter == ADDNEWBADDIERATE:
             baddieAddCounter = 0
@@ -176,7 +176,7 @@ while True:
 
             baddies.append(newBaddie)
 
-        if not reverseCheat and not slowCheat:
+        if not reverseCheat :
             GoodieAddcounter += 1
         if GoodieAddcounter == ADDNEWGOODIERATE:
             GoodieAddcounter = 0
