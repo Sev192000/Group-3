@@ -331,7 +331,7 @@ while True:
         windowSurface.blit(EndSmallCake, (0, 0))
     if score > 5:
         if score < 10:
-            windowSurface.blit(EndMediumCake, (0, 0))
+            windowSurface.blit(EndMediumCake, (-30, 0))
     if score >= 10:
         windowSurface.blit(EndBigCake, (0, 0))
     pygame.display.update()
