@@ -272,3 +272,5 @@ while True:
 #TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
 
 #TODO Aajouter le compteur de vie??
+
+#TODO Ajouter un boss : chef patissier/animal
