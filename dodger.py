@@ -273,3 +273,4 @@ while True:
 #TODO Aajouter le compteur de vie??
 
 #TODO Ajouter un boss : chef patissier/animal
+# TODO : Menu
