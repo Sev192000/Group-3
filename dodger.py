@@ -6,17 +6,25 @@ WINDOWHEIGHT = 600 #longeur fenêtre
 TEXTCOLOR = (0,0,0) #couleur du texte
 BACKGROUNDCOLOR = (200, 255, 255) #couleur du fond
 FPS = 60 #images par seconde
+
 BADDIEMINSIZE = 30 #taille min des méchants
 BADDIEMAXSIZE = 40 #taille max des méchants
 BADDIEMINSPEED = 1 #vitesse min des méchants
 BADDIEMAXSPEED = 8 #vitesse max des méchants
 ADDNEWBADDIERATE = 100 #taux/vitesse ajout des méchants
 PLAYERMOVERATE = 5 #taux/vitesse déplacement joueur
+
 GOODIEMINSIZE = 30
 GOODIEMAXSIZE = 40
 GOODIEMINSPEED = 1
 GOODIEMAXSPEED = 8
 ADDNEWGOODIERATE = 100
+
+MUSHMINSIZE = 30
+MUSHMAXSIZE = 40
+MUSHMINSPEED = 1
+MUSHMAXSPEED = 8
+ADDNEWMUSHRATE = 100
 
 def terminate(): #fin du jeu
     pygame.quit()
@@ -43,6 +51,8 @@ def playerHasHitGoodie(playerRect, goodies):
         if playerRect.colliderect(g['rect']):
             return True
     return False
+
+
 
 def drawText(text, font,surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
