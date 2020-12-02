@@ -300,7 +300,7 @@ while True:
 
         # Check if any of the goodies have hit the player.
         if playerHasHitGoodie(playerRect, mushs):
-            score = score + 1000
+            slowCheat = True
             if score >= topScore:
                 topScore = score # set new top score
 
