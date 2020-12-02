@@ -20,11 +20,9 @@ GOODIEMINSPEED = 1
 GOODIEMAXSPEED = 8
 ADDNEWGOODIERATE = 100
 
-MUSHMINSIZE = 40
-MUSHMAXSIZE = 40
-MUSHMINSPEED = 1
-MUSHMAXSPEED = 3
-ADDNEWMUSHRATE = 100
+MUSHSIZE = 40
+MUSHSPEED = 3
+ADDNEWMUSHRATE = 1000
 
 def terminate(): #fin du jeu
     pygame.quit()
@@ -94,6 +92,7 @@ BigCake = pygame.image.load('BigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('SmallCake.png')
 himage = pygame.image.load('imagedb.png')
+mushimage = pygame.image.load('mushroom.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -106,12 +105,14 @@ while True:
     # Set up the start of the game.
     baddies = []
     goodies = []
+    mush =[]
     score = 0
     playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
     moveLeft = moveRight = moveUp = moveDown = False
     reverseCheat = slowCheat = False
     baddieAddCounter = 0
     GoodieAddcounter = 0
+    MushAddcounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
     while True: # The game loop runs while the game part is playing.
@@ -182,6 +183,19 @@ while True:
                          }
 
             goodies.append(newGoodie)
+
+
+        if not reverseCheat and not slowCheat:
+            MushAddcounter += 1
+        if MushAddcounter == ADDNEWMUSHRATE:
+            MushAddcounter = 0
+            mushSize = random.randint(MUSHMINSIZE, MUSHMAXSIZE)
+            newMush = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - mushSize), 0 - mushSize, mushSize, mushSize),
+                        'speed': MUSHSPEED,
+                        'surface':pygame.transform.scale(goodieImage, (mushSize, mushSize)),
+                         }
+
+            mush.append(newMush)
 
         # Move the player around.
         if moveLeft and playerRect.left > 0:
