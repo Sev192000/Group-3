@@ -80,7 +80,7 @@ pygame.mixer.music.load('VolDuBourdon.wav')
 playerImage = pygame.image.load('bol.png')
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('Bombe.png')
-goodieImage = pygame.image.load('chocolate.png')
+chocolate = pygame.image.load('chocolate.png')
 cherry = pygame.image.load('cherry.png')
 flour = pygame.image.load('flour.png')
 milk = pygame.image.load('milk.png')
@@ -92,7 +92,7 @@ BigCake = pygame.image.load('GirlBigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('GirlSmallCake.png')
 himage = pygame.image.load('imagedb.png')
-GoodiesImageList = (goodieImage,flour,milk,egg,cherry)
+GoodiesImageList = (chocolate,flour,milk,egg,cherry)
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -177,11 +177,11 @@ while True:
         if GoodieAddcounter == ADDNEWGOODIERATE:
             GoodieAddcounter = 0
             goodieSize = random.randint(GOODIEMINSIZE, GOODIEMAXSIZE)
+            goodieImage = GoodiesImageList[random.randint(0, len(GoodiesImageList) - 1)]
             newGoodie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - goodieSize), 0 - goodieSize, goodieSize, goodieSize),
                         'speed': random.randint(GOODIEMINSPEED, GOODIEMAXSPEED),
                         'surface':pygame.transform.scale(goodieImage, (goodieSize, goodieSize)),
                          }
-
             goodies.append(newGoodie)
 
 
