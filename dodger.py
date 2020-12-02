@@ -94,7 +94,7 @@ BigCake = pygame.image.load('BigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('SmallCake.png')
 himage = pygame.image.load('imagedb.png')
-GoodiesImageList = ()
+GoodiesImageList = (goodieImage,flour,milk,egg,cherry)
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
