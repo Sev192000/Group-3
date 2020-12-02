@@ -74,13 +74,11 @@ textbubble = pygame.image.load('textbubble.png')
 BigCake = pygame.image.load('BigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('SmallCake.png')
+himage = pygame.image.load('HomeImage.jpg')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
-windowSurface.blit(pastryGirl, (30,360)) # faut voir l'emplacement de la fille
-windowSurface.blit(textbubble, (120,100))
-drawText('Running pastry chef', font,windowSurface, (WINDOWWIDTH / 4), (WINDOWHEIGHT / 3.3))
-drawText('Press a key to start', font, windowSurface, (WINDOWWIDTH / 2.9) - 30, (WINDOWHEIGHT / 3.5) + 70)
+windowSurface.blit(himage, (0,0)) # faut voir l'emplacement
 pygame.display.update()
 waitForPlayerToPressKey()
 
