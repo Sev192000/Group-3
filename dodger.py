@@ -265,7 +265,6 @@ while True:
 
     gameOverSound.stop()
 
-#TODO chocolat qui clignote
 
 #TODO ajouter les autres images de goodies
 #TODO bonus champignon
