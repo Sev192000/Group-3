@@ -301,12 +301,10 @@ while True:
 
         # Check if any of the Mushs have hit the player.
         if playerHasHitMush(playerRect, mushs):
-            start_ticks = pygame.time.get_ticks()  # starter tick
-            done =False
-            while not done:
+            start_time = pygame.time.get_ticks()  # starter tick
+            slowCheat = False
+            while pygame.time.get_ticks() - start_time <= 5000:
                 slowCheat = True
-                if pygame.time.get_ticks() - start_time >= 5000:
-                    done=True
 
             if score >= topScore:
                 topScore = score # set new top score
