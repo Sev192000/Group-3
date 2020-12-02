@@ -1,6 +1,7 @@
 import pygame, random, sys
 from pygame.locals import *
 
+
 WINDOWWIDTH = 600 #largeur fenêtre de jeu
 WINDOWHEIGHT = 600 #longeur fenêtre
 TEXTCOLOR = (0,0,0) #couleur du texte
@@ -300,9 +301,13 @@ while True:
 
         # Check if any of the Mushs have hit the player.
         if playerHasHitMush(playerRect, mushs):
-            start_time = pygame.time.get_ticks()
-            if pygame.time.get_ticks() - start_time >= 5:
-                slowCheat=True
+            start_ticks = pygame.time.get_ticks()  # starter tick
+            done =False
+            while not done:
+                slowCheat = True
+                if pygame.time.get_ticks() - start_time >= 5000:
+                    done=True
+
             if score >= topScore:
                 topScore = score # set new top score
 
