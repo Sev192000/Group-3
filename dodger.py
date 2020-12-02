@@ -337,7 +337,6 @@ while True:
     gameOverSound.stop()
 
 
-#TODO ajouter les autres images de goodies
 #TODO bonus champignon
 #TODO ajouter l'image du gateau qu'on obtient par rapport à notre score
 
