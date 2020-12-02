@@ -341,7 +341,7 @@ while True:
         if score < 10:
             windowSurface.blit(EndMediumCake, (-32, 0))
     if score >= 10:
-        windowSurface.blit(EndBigCake, (-52, 0))
+        windowSurface.blit(EndBigCake, (-52.5, 0))
     pygame.display.update()
     waitForPlayerToPressKey()
 
