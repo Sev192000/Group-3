@@ -94,6 +94,9 @@ MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('GirlSmallCake.png')
 himage = pygame.image.load('imagedb.png')
 GoodiesImageList = (chocolate,flour,milk,egg,cherry)
+EndSmallCake = pygame.image.load('EndSmallCake.png')
+EndMediumCake = pygame.image.load('EndMediumCake.png')
+EndBigCake = pygame.image.load('EndBigCake.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -325,12 +328,12 @@ while True:
     drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
     if score <= 5:
-        windowSurface.blit(SmallCake, (30, 360))
+        windowSurface.blit(EndSmallCake, (0, 0))
     if score > 5:
         if score < 10:
-            windowSurface.blit(MediumCake, (30, 360))
+            windowSurface.blit(EndMediumCake, (0, 0))
     if score >= 10:
-        windowSurface.blit(BigCake, (30, 360))
+        windowSurface.blit(EndBigCake, (0, 0))
     pygame.display.update()
     waitForPlayerToPressKey()
 
