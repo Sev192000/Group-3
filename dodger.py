@@ -97,6 +97,13 @@ GoodiesImageList = (chocolate,flour,milk,egg,cherry)
 EndSmallCake = pygame.image.load('EndSmallCake.png')
 EndMediumCake = pygame.image.load('EndMediumCake.png')
 EndBigCake = pygame.image.load('EndBigCake.png')
+Instructions = pygame.image.load('Instructions.png')
+
+# Show instructions
+windowSurface.fill(BACKGROUNDCOLOR)
+windowSurface.blit(Instructions, (0,0)) # faut voir l'emplacement
+pygame.display.update()
+waitForPlayerToPressKey()
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -118,6 +125,7 @@ while True:
     GoodieAddcounter = 0
     MushAddcounter = 0
     pygame.mixer.music.play(-1, 0.0)
+
 
     while True: # The game loop runs while the game part is playing.
 
@@ -308,7 +316,8 @@ while True:
 
         # Check if any of the Mushs have hit the player.
         if playerHasHitMush(playerRect, mushs):
-            pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
+            slowcheat=True
+            #pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
             #why isn't it working ?
 
 
