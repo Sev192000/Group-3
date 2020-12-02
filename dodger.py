@@ -331,7 +331,7 @@ if __name__ == "__main__":
 
         gameOverSound.stop()
 
-# TODO chocolat qui clignote
+
 
 # TODO bonus champignon
 
