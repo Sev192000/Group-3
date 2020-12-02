@@ -142,6 +142,10 @@ while True:
                 if event.key == K_DOWN or event.key == K_s:
                     moveUp = False
                     moveDown = True
+                if event.key == K_m:
+                    pygame.mixer.music.pause() #couper la musique
+                if event.key == K_n:
+                    pygame.mixer.music.unpause() #remettre la musique
 
             if event.type == KEYUP:
                 if event.key == K_z:
@@ -312,6 +316,7 @@ while True:
                 mushs.remove(m)
 
         mainClock.tick(FPS)
+
 
     # Stop the game and show the "Game Over" screen.
     pygame.mixer.music.stop()
