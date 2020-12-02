@@ -328,7 +328,7 @@ while True:
     drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
     if score <= 5:
-        windowSurface.blit(EndSmallCake, (0, 0))
+        windowSurface.blit(EndSmallCake, (-32, 0))
     if score > 5:
         if score < 10:
             windowSurface.blit(EndMediumCake, (-30, 0))
