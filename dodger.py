@@ -71,9 +71,9 @@ baddieImage = pygame.image.load('Bombe.png')
 goodieImage = pygame.image.load('chocolate.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
 textbubble = pygame.image.load('textbubble.png')
-BigCake = pygame.image.load('BigCake.png')
+BigCake = pygame.image.load('GirlBigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
-SmallCake = pygame.image.load('SmallCake.png')
+SmallCake = pygame.image.load('GirlSmallCake.png')
 himage = pygame.image.load('HomeImage.jpg')
 
 # Show the "Start" screen.
