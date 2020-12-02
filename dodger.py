@@ -92,7 +92,6 @@ BigCake = pygame.image.load('BigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('SmallCake.png')
 himage = pygame.image.load('imagedb.png')
-mushimage = pygame.image.load('mushroom.png')
 
 # Show the "Start" screen.
 windowSurface.fill(BACKGROUNDCOLOR)
