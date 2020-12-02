@@ -339,9 +339,9 @@ while True:
         drawText('Top Score: %s' % (topScore), font, windowSurface, 10, 40)
     if score > 5:
         if score < 10:
-            windowSurface.blit(EndMediumCake, (-30, 0))
+            windowSurface.blit(EndMediumCake, (-32, 0))
     if score >= 10:
-        windowSurface.blit(EndBigCake, (-32, 0))
+        windowSurface.blit(EndBigCake, (-52, 0))
     pygame.display.update()
     waitForPlayerToPressKey()
 
