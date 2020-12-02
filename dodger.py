@@ -308,7 +308,7 @@ while True:
 
         # Check if any of the Mushs have hit the player.
         if playerHasHitMush(playerRect, mushs):
-            slowCheat = True
+            pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
 
 
         for m in mushs:
