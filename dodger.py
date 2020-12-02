@@ -298,9 +298,11 @@ while True:
 
         mainClock.tick(FPS)
 
-        # Check if any of the goodies have hit the player.
-        if playerHasHitGoodie(playerRect, mushs):
-            slowCheat = True
+        # Check if any of the Mushs have hit the player.
+        if playerHasHitMush(playerRect, mushs):
+            start_time = pygame.time.get_ticks()
+            if pygame.time.get_ticks() - start_time >= 5:
+                slowCheat=True
             if score >= topScore:
                 topScore = score # set new top score
 
