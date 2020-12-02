@@ -337,6 +337,10 @@ while True:
 
     if score <= 5:
         windowSurface.blit(EndSmallCake, (-32, 0))
+        drawText('GAME OVER', font, windowSurface, (WINDOWWIDTH / 3.3), (WINDOWHEIGHT / 2))
+        drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
+        drawText('Score: %s' % (score), font, windowSurface, 10, 0)
+        drawText('Top Score: %s' % (topScore), font, windowSurface, 10, 40)
     if score > 5:
         if score < 10:
             windowSurface.blit(EndMediumCake, (-30, 0))
