@@ -305,14 +305,7 @@ while True:
         # Check if any of the Mushs have hit the player.
         if playerHasHitMush(playerRect, mushs):
             slowCheat = True
-            start_time = pygame.time.get_ticks()  # starter tick
-            while pygame.time.get_ticks() - start_time <= 5000:
-                slowCheat = True
-            else:
-                slowCheat=False
 
-            if score >= topScore:
-                topScore = score # set new top score
 
         for m in mushs:
             if playerRect.colliderect(m['rect']):
