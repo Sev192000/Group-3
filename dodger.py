@@ -252,12 +252,12 @@ while True:
     drawText('Press a key to play again', font, windowSurface, (WINDOWWIDTH / 3.3) - 80, (WINDOWHEIGHT / 3.3) + 50)
 
     if score <= 5:
-        windowSurface.blit(pastryGirl, (30, 360))
+        windowSurface.blit(SmallCake, (30, 360))
     if score > 5:
         if score < 10:
-            windowSurface.blit(baddieImage, (30, 360))
+            windowSurface.blit(MediumCake, (30, 360))
     if score >= 10:
-        windowSurface.blit(pastryGirl, (30, 360))
+        windowSurface.blit(BigCake, (30, 360))
     pygame.display.update()
     waitForPlayerToPressKey()
 
