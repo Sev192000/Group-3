@@ -352,5 +352,5 @@ while True:
 
 #TODO Ajouter le compteur de vie??
 
-#TODO Ajouter un boss : chef patissier/animal
+#TODO Ajouter un boss : chef patissier/animal : tom and jerry
 # TODO : Menu
