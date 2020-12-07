@@ -1,5 +1,6 @@
 import pygame, random, sys
 from pygame.locals import *
+import time
 
 
 WINDOWWIDTH = 600 #largeur fenêtre de jeu
@@ -355,6 +356,8 @@ while True:
 
 
 #TODO bonus champignon
+
+#TODO ajuster la vitesse avec le temps
 
 #TODO Ajouter le compteur de vie??
 
