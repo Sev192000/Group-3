@@ -127,8 +127,13 @@ while True:
     MushAddcounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
-
+    timer = 0
     while True: # The game loop runs while the game part is playing.
+        timer = timer - 1
+        if timer < 0 :
+            slowCheat = False
+
+        print(slowCheat, timer)
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -318,9 +323,9 @@ while True:
         # Check if any of the Mushs have hit the player.
 
         if playerHasHitMush(playerRect, mushs):
-            time = pygame.time.get_ticks()
-            while pygame.time.get_ticks() < 5000 + time:
-                slowCheat = True
+            timer = 50
+            slowCheat = True
+
 
             #pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
             #why isn't it working ?

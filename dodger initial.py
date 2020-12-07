@@ -63,6 +63,14 @@ def drawText(text, font,surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
+class Object:
+    def __init__(self):
+        self.nom = ""
+
+
+
+
+
 # Set up pygame, the window, and the mouse cursor.
 pygame.init()
 mainClock = pygame.time.Clock()
