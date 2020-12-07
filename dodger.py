@@ -134,8 +134,6 @@ while True:
         if timer < 0 :
             slowCheat = False
 
-        print(slowCheat, timer)
-
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
@@ -324,7 +322,7 @@ while True:
         # Check if any of the Mushs have hit the player.
 
         if playerHasHitMush(playerRect, mushs):
-            timer = 50
+            timer = 100
             slowCheat = True
 
 
