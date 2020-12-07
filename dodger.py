@@ -99,6 +99,7 @@ EndSmallCake = pygame.image.load('EndSmallCake.png')
 EndMediumCake = pygame.image.load('EndMediumCake.png')
 EndBigCake = pygame.image.load('EndBigCake.png')
 Instructions = pygame.image.load('Instructions.png')
+broccoli = pygame.image.load('broccoli.png')
 
 # Show instructions
 windowSurface.fill(BACKGROUNDCOLOR)
