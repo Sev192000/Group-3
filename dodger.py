@@ -321,8 +321,6 @@ while True:
             while pygame.time.get_ticks() < 5000 + time:
                 slowCheat = True
 
-
-
             #pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
             #why isn't it working ?
 
