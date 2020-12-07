@@ -315,8 +315,14 @@ while True:
         mainClock.tick(FPS)
 
         # Check if any of the Mushs have hit the player.
+
         if playerHasHitMush(playerRect, mushs):
-            slowCheat = True
+            time = pygame.time.get_ticks()
+            while pygame.time.get_ticks() < 5000 + time:
+                slowCheat = True
+
+
+
             #pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
             #why isn't it working ?
 
