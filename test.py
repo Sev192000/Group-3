@@ -1,5 +1,6 @@
 import pygame, random, sys
 import math
+import self
 from pygame.locals import *
 
 
@@ -64,8 +65,9 @@ def drawText(text, font,surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
-class Enemy(object):
-    def __init__(self,x,y):  # initial position
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self,x = 300,y = 360):  # initial position
+        pygame.sprite.Sprite.__init__(self)
         self.x = x
         self.y = y
     def move(self, speed=5): # chase movement
@@ -79,11 +81,8 @@ class Enemy(object):
             self.y += speed
         elif self.y > py:
             self.y -= speed
-
-class Enemy(object):
-    def move_towards_player(self, player):
-        # Find direction vector (dx, dy) between enemy and player.
-        dx, dy = player.rect.x - self.rect.x, player.rect.y - self.rect.y
+    def move_towards_player(self):
+        dx, dy = player.rect.x - self.rect.x, player.rect.y - self.rect.y # Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
@@ -257,7 +256,7 @@ while True:
         # Move the baddies down.
         for b in baddies:
             if not reverseCheat and not slowCheat:
-                move_towards_player
+                move_towards_player(self)
             elif reverseCheat:
                 b['rect'].move_ip(0, -5)
             elif slowCheat:
