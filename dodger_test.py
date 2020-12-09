@@ -54,7 +54,6 @@ class Baddie(pygame.sprite.Sprite):
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
         self.speedy = random.randrange(1,8) #vitesse des baddies
 
-
     def update(self):
         self.rect.y += self.speedy #faire bouger de haut en bas
         if self.rect.top > HEIGHT + 10 : #disparaitre quand ils arrivent en bas. quand un disparait un réaparait randomly
@@ -73,7 +72,7 @@ all_sprites = pygame.sprite.Group()
 baddies = pygame.sprite.Group() # groupe des méchants
 player = Player()
 all_sprites.add(player)
-for i in range(8): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+for i in range(2): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
     b = Baddie()
     all_sprites.add(b)
     baddies.add(b)
