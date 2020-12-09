@@ -2,8 +2,8 @@
 import pygame
 import random
 
-WIDTH = 360
-HEIGHT = 480
+WIDTH = 600
+HEIGHT = 600
 FPS = 60
 
 # define colors
@@ -21,8 +21,7 @@ playerImage = pygame.image.load('bol.png')
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((50, 50))
-        self.image.fill(playerImage)
+        self.image = playerImage
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
 # movement
