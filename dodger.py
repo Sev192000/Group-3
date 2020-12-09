@@ -230,7 +230,7 @@ while True:
         # Move the baddies down.
         for b in baddies:
             if not reverseCheat and not slowCheat:
-                b['rect'].move_ip(1, b['speed']) #chiffre indique direction chute, b[speed] :
+                b['rect'].move_ip(0, b['speed']) #chiffre indique direction chute, b[speed] :
             elif reverseCheat:
                 b['rect'].move_ip(0, -5)
             elif slowCheat:
