@@ -15,7 +15,6 @@ BLUE = (0, 0, 255)
 BLACK = (0,0,0)
 
 # nos images
-
 playerImage = pygame.image.load('bol.png')
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('Bombe.png')
@@ -38,6 +37,7 @@ Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
 
+# texte
 font_name = pygame.font.match_font('Berlin Sans FB')
 def draw_text(surf, text, size, x, y):
     font = pygame.font.Font(font_name,size)
@@ -45,6 +45,10 @@ def draw_text(surf, text, size, x, y):
     text_rect = text_surface.get_rect()
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
+
+    # Set up sounds.
+    gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
+    music = pygame.mixer.Sound('VolDuBourdon.wav')
 
 # player
 class Player(pygame.sprite.Sprite):
