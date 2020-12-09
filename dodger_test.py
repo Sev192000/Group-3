@@ -23,10 +23,19 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = playerImage
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH / 2, HEIGHT / 2)
+        self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
+        self.speedx = 0
+
 # movement
     def update(self):
-        self.rect.x += 5
+        self.speedx = 0
+        keystate = pygame.key.get_pressed()
+        if keystate[pygame.K_LEFT]:
+            self.speedx = -8
+        if keystate[pygame.K_RIGHT]:
+            self.speedx = 8
+        self.rect.x += self.speedx
+
 
 # initialize pygame and create window
 pygame.init()
@@ -55,7 +64,8 @@ while running:
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
-    # *after* drawing everything, flip the display
+    # after drawing everything, flip the display
     pygame.display.flip()
 
 pygame.quit()
+##
