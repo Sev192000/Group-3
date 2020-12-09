@@ -53,10 +53,14 @@ class Baddie(pygame.sprite.Sprite):
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
         self.speedy = random.randrange(1,8) #vitesse des baddies
+        self.speedx = random.randrange(-3,3) # diagonal movement
+
 
     def update(self):
-        self.rect.y += self.speedy #faire bouger de haut en bas
-        if self.rect.top > HEIGHT + 10 : #disparaitre quand ils arrivent en bas. quand un disparait un réaparait randomly
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy #faire bouger de haut en bas.
+        # respawn the baddie when it goes offscreen.
+        if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
