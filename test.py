@@ -2,7 +2,6 @@ import pygame, random, sys
 import math, self
 from pygame.locals import *
 
-
 WIDTH = 600
 HEIGHT = 600
 FPS = 60
@@ -13,13 +12,14 @@ BACKGROUNDCOLOR = (200, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-BLACK = (0,0,0)
+BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 
 # nos images
 
 playerImage = pygame.image.load('bol.png')
 baddieImage = pygame.image.load('Bombe.png')
+
 
 # player
 class Player(pygame.sprite.Sprite):
@@ -28,45 +28,44 @@ class Player(pygame.sprite.Sprite):
         self.image = playerImage
         self.rect = self.image.get_rect()
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
-        self.speedx = 0 # speed of the player
+        self.speedx = 0  # speed of the player
 
     def update(self):
         self.speedx = 0
-        keystate = pygame.key.get_pressed() #movements when pressing keys
+        keystate = pygame.key.get_pressed()  # movements when pressing keys
         if keystate[pygame.K_LEFT]:
-            self.speedx = -8 # negative is moving left
+            self.speedx = -8  # negative is moving left
         if keystate[pygame.K_RIGHT]:
-            self.speedx = 8 # positive is moving right
+            self.speedx = 8  # positive is moving right
         self.rect.x += self.speedx
 
-        if self.rect.right > WIDTH: #setting the edges of the screen
+        if self.rect.right > WIDTH:  # setting the edges of the screen
             self.rect.right = WIDTH
-        if self.rect.left < 0: # left edge
+        if self.rect.left < 0:  # left edge
             self.rect.left = 0
 
-#nouvelle classe baddies
+
+# nouvelle classe baddies
 
 class Baddie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = baddieImage
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1,8) #vitesse des baddies
-        self.speedx = random.randrange(-3,3) # diagonal movement
-
+        self.rect.x = random.randrange(WIDTH - self.rect.width)  # le spawn est aléatoire
+        self.rect.y = random.randrange(-100, -40)  # random pour pas quils arrivent tous au meme endroit
+        self.speedy = random.randrange(1, 8)  # vitesse des baddies
+        self.speedx = random.randrange(-3, 3)  # diagonal movement
 
     def update(self):
         self.rect.x += self.speedx
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        self.rect.y += self.speedy  # faire bouger de haut en bas.
         Player.rect = self.image.get_rect()
         # respawn the baddie when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
-
 
     def move_towards_player(self, Player):
         dx, dy = Player.rect.x - self.rect.x, Player.rect.y - self.rect.y  # Find direction vector (dx, dy) between enemy and player.
@@ -75,7 +74,7 @@ class Baddie(pygame.sprite.Sprite):
         # Move along this normalized vector towards the player at current speed.
         self.rect.x += dx * self.speedx
         self.rect.y += dy * self.speedy
-        #pas de message d'erreur mais ça fonctionne pas...
+        # pas de message d'erreur mais ça fonctionne pas...
 
 
 # initialize pygame and create window
@@ -85,10 +84,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
-baddies = pygame.sprite.Group() # groupe des méchants
+baddies = pygame.sprite.Group()  # groupe des méchants
 player = Player()
 all_sprites.add(player)
-for i in range(2): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+for i in range(2):  # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
     b = Baddie()
     all_sprites.add(b)
     baddies.add(b)
