@@ -37,6 +37,7 @@ EndMediumCake = pygame.image.load('EndMediumCake.png')
 EndBigCake = pygame.image.load('EndBigCake.png')
 Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
+GoodiesImageList = [chocolate,flour,milk,egg]
 
 # player
 class Player(pygame.sprite.Sprite):
@@ -87,8 +88,8 @@ class Baddie(pygame.sprite.Sprite):
 class Goodie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.GoodiesImageList = (chocolate,flour,milk,egg,cherry)
-        self.image = self.GoodiesImageList[random.randint(0, len(self.GoodiesImageList) - 1)]
+        self.GoodiesImageList = [chocolate,flour,milk,egg,cherry]
+        self.image = random.choice(self.GoodiesImageList)
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
@@ -101,6 +102,7 @@ class Goodie(pygame.sprite.Sprite):
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
+            self.image = random.choice(self.GoodiesImageList)
 
 # initialize pygame and create window
 pygame.init()
