@@ -60,6 +60,7 @@ class Baddie(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += self.speedx
         self.rect.y += self.speedy #faire bouger de haut en bas.
+        Player.rect = self.image.get_rect()
         # respawn the baddie when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
@@ -67,13 +68,14 @@ class Baddie(pygame.sprite.Sprite):
             self.speedy = random.randrange(1, 8)
 
 
-    def move_towards_player(self):
-        dx, dy = player.rect.x - self.rect.x, player.rect.y - self.rect.y  # Find direction vector (dx, dy) between enemy and player.
+    def move_towards_player(self, Player):
+        dx, dy = Player.rect.x - self.rect.x, Player.rect.y - self.rect.y  # Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
         self.rect.x += dx * self.speedx
         self.rect.y += dy * self.speedy
+        #pas de message d'erreur mais ça fonctionne pas...
 
 
 # initialize pygame and create window
