@@ -66,6 +66,21 @@ def drawText(text, font,surface, x, y):
 class Object:
     def __init__(self):
         self.nom = ""
+        self.image = pygame.image.load('Bombe.png')
+        self.baddieAddCounter = baddieAddCounter
+
+    def addNewBaddie(self):
+        if not reverseCheat:
+            baddieAddCounter += 1
+        if baddieAddCounter == ADDNEWBADDIERATE:
+            baddieAddCounter = 0
+            baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
+            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
+                        'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
+                        'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
+                        }
+
+            baddies.append(newBaddie)
 
 
 
