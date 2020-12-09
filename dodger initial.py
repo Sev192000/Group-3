@@ -63,11 +63,6 @@ def drawText(text, font,surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
-class Object:
-    def __init__(self):
-        self.nom = ""
-        self.image = pygame.image.load('Bombe.png')
-        self.baddieAddCounter = baddieAddCounter
 
     def addNewBaddie(self):
         if not reverseCheat:
