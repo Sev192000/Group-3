@@ -76,7 +76,7 @@ all_sprites = pygame.sprite.Group()
 baddies = pygame.sprite.Group() # groupe des méchants
 player = Player()
 all_sprites.add(player)
-for i in range(2): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+for i in range(5): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
     b = Baddie()
     all_sprites.add(b)
     baddies.add(b)
