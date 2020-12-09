@@ -96,7 +96,9 @@ while running:
     all_sprites.update()
 
     # Check if Player has hit Baddie
-    hits = pygame.sprite.spritecollide(Player,baddies,False)
+    hits = pygame.sprite.spritecollide(player,baddies,False)
+    if hits:
+        running = False
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
