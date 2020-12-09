@@ -74,7 +74,7 @@ class Baddie(pygame.sprite.Sprite):
         # Move along this normalized vector towards the player at current speed.
         self.rect.x += dx * self.speedx
         self.rect.y += dy * self.speedy
-        # pas de message d'erreur mais ça fonctionne pas...
+        # pas de message d'erreur mais ça fonctionne pas... SOS
 
 
 # initialize pygame and create window
