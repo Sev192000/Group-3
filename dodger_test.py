@@ -29,12 +29,16 @@ class Player(pygame.sprite.Sprite):
 # movement
     def update(self):
         self.speedx = 0
-        keystate = pygame.key.get_pressed()
+        keystate = pygame.key.get_pressed() #movements when pressing keys
         if keystate[pygame.K_LEFT]:
             self.speedx = -8
         if keystate[pygame.K_RIGHT]:
             self.speedx = 8
         self.rect.x += self.speedx
+        if self.rect.right > WIDTH: #setting the edges of the screen
+            self.rect.right = WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
 
 
 # initialize pygame and create window
