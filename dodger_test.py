@@ -136,6 +136,7 @@ score = 0
 
 # set up sounds
 background_music = pygame.mixer.music.load('VolDuBourdon.wav')
+explosion_sound = pygame.mixer.Sound('ExplosionSound.wav')
 pygame.mixer.music.play(loops=-1)
 
 # Game loop
@@ -160,7 +161,18 @@ while running:
     # Check if Player has hit Baddie
     hits_Baddie = pygame.sprite.spritecollide(player,baddies,False)
     if hits_Baddie:
-        running = False
+        pygame.mixer.music.stop()
+        explosion_sound.play()
+        if score <= 5:
+            screen.blit(EndSmallCake, (-32, 0))
+            draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
+        if score > 5:
+            if score < 10:
+                screen.blit(EndMediumCake, (-32, 0))
+        if score >= 10:
+            screen.blit(EndBigCake, (-52.5, 0))
+
+        #running = False
 
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
@@ -173,12 +185,12 @@ while running:
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
-    draw_text(screen, str(score), 18, 20, 10)
-
+    draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
 
 
     # after drawing everything, flip the display
     pygame.display.flip()
 
 pygame.quit()
+
 ##
