@@ -18,7 +18,26 @@ RED = (255, 0, 0)
 # nos images
 
 playerImage = pygame.image.load('bol.png')
+playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load('Bombe.png')
+chocolate = pygame.image.load('chocolate.png')
+cherry = pygame.image.load('cherry.png')
+flour = pygame.image.load('flour.png')
+milk = pygame.image.load('milk.png')
+egg = pygame.image.load('egg.png')
+mushroom = pygame.image.load('mushroom.png')
+pastryGirl = pygame.image.load('pastrygirl.png')
+textbubble = pygame.image.load('textbubble.png')
+BigCake = pygame.image.load('GirlBigCake.png')
+MediumCake = pygame.image.load('GirlMediumCake.png')
+SmallCake = pygame.image.load('GirlSmallCake.png')
+HomeImage = pygame.image.load('imagedb.png')
+GoodiesImageList = (chocolate,flour,milk,egg,cherry)
+EndSmallCake = pygame.image.load('EndSmallCake.png')
+EndMediumCake = pygame.image.load('EndMediumCake.png')
+EndBigCake = pygame.image.load('EndBigCake.png')
+Instructions = pygame.image.load('Instructions.png')
+broccoli = pygame.image.load('broccoli.png')
 
 # player
 class Player(pygame.sprite.Sprite):
@@ -99,6 +118,8 @@ while running:
     hits = pygame.sprite.spritecollide(player,baddies,False)
     if hits:
         running = False
+
+
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
