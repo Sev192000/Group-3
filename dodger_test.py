@@ -46,10 +46,6 @@ def draw_text(surf, text, size, x, y):
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
 
-    # Set up sounds.
-    gameOverSound = pygame.mixer.Sound('ExplosionSound.wav')
-    music = pygame.mixer.Sound('VolDuBourdon.wav')
-
 # player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -138,6 +134,10 @@ for n in range(5):
 
 score = 0
 
+# set up sounds
+background_music = pygame.mixer.music.load('VolDuBourdon.wav')
+pygame.mixer.music.play(loops=-1)
+
 # Game loop
 running = True
 while running:
@@ -174,6 +174,8 @@ while running:
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
     draw_text(screen, str(score), 18, 20, 10)
+
+
 
     # after drawing everything, flip the display
     pygame.display.flip()
