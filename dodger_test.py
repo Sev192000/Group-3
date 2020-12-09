@@ -12,6 +12,8 @@ BACKGROUNDCOLOR = (200, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+BLACK = (0,0,0)
+RED = (255, 0, 0)
 
 # nos images
 
@@ -24,17 +26,67 @@ class Player(pygame.sprite.Sprite):
         self.image = playerImage
         self.rect = self.image.get_rect()
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
-        self.speedx = 0
+        self.speedx = 0 # speed of the
 
 # movement
     def update(self):
         self.speedx = 0
-        keystate = pygame.key.get_pressed()
+        keystate = pygame.key.get_pressed() #movements when pressing keys
         if keystate[pygame.K_LEFT]:
-            self.speedx = -8
+            self.speedx = -8 # negative is moving left
         if keystate[pygame.K_RIGHT]:
-            self.speedx = 8
+            self.speedx = 8 # positive is moving right
         self.rect.x += self.speedx
+
+        if self.rect.right > WIDTH: #setting the edges of the screen
+            self.rect.right = WIDTH
+        if self.rect.left < 0: # left edge
+            self.rect.left = 0
+
+class Mob(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((30, 40))
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randrange(WIDTH - self.rect.width)
+        self.rect.y = random.randrange(-100, -40)
+        self.speedy = random.randrange(1, 8)
+        self.speedx = random.randrange(-3, 3)
+
+    def update(self):
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
+            self.rect.x = random.randrange(WIDTH - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
+
+ght > WIDTH + 20:
+            self.rect.x = random.randrange(WIDTH - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
+
+#nouvelle classe baddies
+
+class Mob(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((30, 40))
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randrange(WIDTH - self.rect.width)
+        self.rect.y = random.randrange(-100, -40)
+        self.speedy = random.randrange(1, 8)
+        self.speedx = random.randrange(-3, 3)
+
+    def update(self):
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
+            self.rect.x = random.randrange(WIDTH - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
 
 
 # initialize pygame and create window
