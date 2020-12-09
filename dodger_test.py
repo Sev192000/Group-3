@@ -26,7 +26,52 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
 # movement
     def update(self):
-        self.rect.x += 5
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                terminate()
+
+            if event.type == KEYDOWN:
+                if event.key == K_z:
+                    reverseCheat = True
+                if event.key == K_x:
+                    slowCheat = True
+                if event.key == K_LEFT or event.key == K_a:
+                    moveRight = False
+                    moveLeft = True
+                if event.key == K_RIGHT or event.key == K_d:
+                    moveLeft = False
+                    moveRight = True
+                if event.key == K_UP or event.key == K_w:
+                    moveDown = False
+                    moveUp = True
+                if event.key == K_DOWN or event.key == K_s:
+                    moveUp = False
+                    moveDown = True
+                if event.key == K_m:
+                    pygame.mixer.music.pause() #couper la musique
+                if event.key == K_n:
+                    pygame.mixer.music.unpause() #remettre la musique
+
+            if event.type == KEYUP:
+                if event.key == K_z:
+                    reverseCheat = False
+                    score = 0
+                if event.key == K_x:
+                    slowCheat = False
+                    score = 0
+                if event.key == K_ESCAPE:
+                        terminate()
+
+                if event.key == K_LEFT or event.key == K_a:
+                    moveLeft = False
+                if event.key == K_RIGHT or event.key == K_d:
+                    moveRight = False
+                if event.key == K_UP or event.key == K_w:
+                    moveUp = False
+                if event.key == K_DOWN or event.key == K_s:
+                    moveDown = False
+
 
 # initialize pygame and create window
 pygame.init()
