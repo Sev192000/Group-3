@@ -53,8 +53,6 @@ while running:
     # Draw / render
     screen.fill(BLACK)
     all_sprites.draw(screen)
-    # Draw / render
-    screen.fill(BLACK)
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
