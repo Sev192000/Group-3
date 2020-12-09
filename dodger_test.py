@@ -38,6 +38,16 @@ Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
 
+font_name = pygame.font.match_font('Berlin Sans FB')
+def draw_text(surf, text, size, x, y):
+    font = pygame.font.Font(font_name,size)
+    text_surface=font.render(text,True,BLACK)
+    text_rect = text_surface.get_rect()
+    text_rect.topleft = (x,y)
+    surf.blit(text_surface, text_rect)
+
+
+
 # player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -123,6 +133,8 @@ for n in range(5):
     all_sprites.add(g)
     goodies.add(g)
 
+score = 0
+
 # Game loop
 running = True
 while running:
@@ -144,10 +156,13 @@ while running:
 
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, False)
+    if hits_Goodie:
+        score = score + 1
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
+    draw_text(screen, str(score), 18, WIDTH/2, 10)
 
     # after drawing everything, flip the display
     pygame.display.flip()
