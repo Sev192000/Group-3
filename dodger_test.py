@@ -38,7 +38,7 @@ class Player(pygame.sprite.Sprite):
 
         if self.rect.right > WIDTH: #setting the edges of the screen
             self.rect.right = WIDTH
-        if self.rect.left < 0:
+        if self.rect.left < 0: # left edge
             self.rect.left = 0
 
 # initialize pygame and create window
