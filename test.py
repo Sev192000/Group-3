@@ -65,15 +65,18 @@ class Baddie(pygame.sprite.Sprite):
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
+            Player.rect.x = self.rect.x
+            Player.rect.y = self.rect.y
 
 
-    def move_towards_player(self):
-        dx, dy = player.rect.x - self.rect.x, player.rect.y - self.rect.y  # Find direction vector (dx, dy) between enemy and player.
-        dist = math.hypot(dx, dy)
-        dx, dy = dx / dist, dy / dist  # Normalize.
-        # Move along this normalized vector towards the player at current speed.
-        self.rect.x += dx * self.speedx
-        self.rect.y += dy * self.speedy
+    def __init__(self):
+        def move_towards_player(self, Player):
+            [dx, dy] = Player.rect.x - self.rect.x, Player.rect.y - self.rect.y  # Find direction vector (dx, dy) between enemy and player.
+            dist = math.hypot(dx, dy)
+            [dx, dy] = dx / dist, dy / dist  # Normalize.
+            # Move along this normalized vector towards the player at current speed.
+            self.rect.x += dx * self.speedx
+            self.rect.y += dy * self.speedy
 
 
 # initialize pygame and create window
