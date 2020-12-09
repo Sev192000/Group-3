@@ -47,8 +47,6 @@ def draw_text(surf, text, size, x, y):
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
 
-
-
 # player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -163,7 +161,7 @@ while running:
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
-    draw_text(screen, str(score), 18, WIDTH/2, 10)
+    draw_text(screen, str(score), 18, 20, 10)
 
     # after drawing everything, flip the display
     pygame.display.flip()
