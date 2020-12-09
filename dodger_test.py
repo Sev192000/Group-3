@@ -24,9 +24,10 @@ class Player(pygame.sprite.Sprite):
         self.image = playerImage
         self.rect = self.image.get_rect()
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
+        self.speedx = 0
 # movement
     def update(self):
-        self.rect.x +=5
+        self.rect.x += self.speedx
 
 
 # initialize pygame and create window
