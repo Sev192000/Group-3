@@ -69,7 +69,6 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0: # left edge
             self.rect.left = 0
 
-
 #nouvelle classe baddies
 
 class Baddie(pygame.sprite.Sprite):
@@ -147,11 +146,6 @@ while running:
 
     # Update
     all_sprites.update()
-
-    # Pressing ESC quits.
-    keystate = pygame.key.get_pressed()
-    if keystate[pygame.K_ESCAPE]:
-        running = False
 
     # Check if Player has hit Baddie
     hits_Baddie = pygame.sprite.spritecollide(player,baddies,False)
