@@ -32,7 +32,6 @@ BigCake = pygame.image.load('GirlBigCake.png')
 MediumCake = pygame.image.load('GirlMediumCake.png')
 SmallCake = pygame.image.load('GirlSmallCake.png')
 HomeImage = pygame.image.load('imagedb.png')
-GoodiesImageList = (chocolate,flour,milk,egg,cherry)
 EndSmallCake = pygame.image.load('EndSmallCake.png')
 EndMediumCake = pygame.image.load('EndMediumCake.png')
 EndBigCake = pygame.image.load('EndBigCake.png')
@@ -88,8 +87,8 @@ class Baddie(pygame.sprite.Sprite):
 class Goodie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.GoodieImageList = (chocolate,flour,milk,egg,cherry)
-        self.image = GoodiesImageList[random.randint(0, len(GoodiesImageList)-1)]
+        self.GoodiesImageList = (chocolate,flour,milk,egg,cherry)
+        self.image = self.GoodiesImageList[random.randint(0, len(self.GoodiesImageList) - 1)]
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
@@ -138,11 +137,12 @@ while running:
     all_sprites.update()
 
     # Check if Player has hit Baddie
-    hits = pygame.sprite.spritecollide(player,baddies,False)
-    if hits:
+    hits_Baddie = pygame.sprite.spritecollide(player,baddies,False)
+    if hits_Baddie:
         running = False
 
-
+    # Check if Player has hit Goodie
+    hits_Goodie = pygame.sprite.spritecollide(player, goodies, False)
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
