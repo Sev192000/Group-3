@@ -39,11 +39,16 @@ def waitForPlayerToPressKey():
                     terminate()
                 return
 
-def playerHasHitBaddie(playerRect, baddies):
-    for b in baddies:
-        if playerRect.colliderect(b['rect']):
-            return True
-    return False
+print(type(baddies))
+
+class hashit:
+    def __init__(self, name ):
+        for h in name:
+            if playerRect.colliderect(h['rect']):
+                return True
+        return False
+
+playerHasHitBaddie = hashit(baddies)
 
 def playerHasHitGoodie(playerRect, goodies):
     for g in goodies:
