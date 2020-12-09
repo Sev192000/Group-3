@@ -24,16 +24,16 @@ class Player(pygame.sprite.Sprite):
         self.image = playerImage
         self.rect = self.image.get_rect()
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
-        self.speedx = 0
+        self.speedx = 0 # speed of the
 
 # movement
     def update(self):
         self.speedx = 0
         keystate = pygame.key.get_pressed() #movements when pressing keys
         if keystate[pygame.K_LEFT]:
-            self.speedx = -8
+            self.speedx = -8 # negative is moving left
         if keystate[pygame.K_RIGHT]:
-            self.speedx = 8
+            self.speedx = 8 # positive is moving right
         self.rect.x += self.speedx
         if self.rect.right > WIDTH: #setting the edges of the screen
             self.rect.right = WIDTH
