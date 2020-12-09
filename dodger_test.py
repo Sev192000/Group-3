@@ -19,8 +19,8 @@ playerImage = pygame.image.load('bol.png')
 
 # player
 class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
+    def _init_(self):
+        pygame.sprite.Sprite._init_(self)
         self.image = playerImage
         self.rect = self.image.get_rect()
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
@@ -56,9 +56,8 @@ while running:
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
-    # *after* drawing everything, flip the display
+    # after drawing everything, flip the display
     pygame.display.flip()
 
 pygame.quit()
-
 ##
