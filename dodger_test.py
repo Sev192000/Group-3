@@ -50,19 +50,17 @@ class Baddie(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = baddieImage
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH) #le spawn est aléatoire
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
         self.speedy = random.randrange(1,8) #vitesse des baddies
-
-        if self.rect.top > HEIGHT + 10 : #disparaitre quand ils arrivent en bas. quand un disparait un réaparait randomly
-            self.rect.x = random.randrange(WIDTH - self.rect.width)
-            self.rect.y = random.randrange(-100, -40)
-            self.speedy = random.randrange(1, 8)
 
 
     def update(self):
         self.rect.y += self.speedy #faire bouger de haut en bas
-
+        if self.rect.top > HEIGHT + 10 : #disparaitre quand ils arrivent en bas. quand un disparait un réaparait randomly
+            self.rect.x = random.randrange(WIDTH - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
 
 
 # initialize pygame and create window
