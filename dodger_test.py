@@ -2,8 +2,8 @@
 import pygame
 import random
 
-WIDTH = 600
-HEIGHT = 600
+WIDTH = 360
+HEIGHT = 480
 FPS = 60
 
 # define colors
@@ -18,6 +18,7 @@ RED = (255, 0, 0)
 # nos images
 
 playerImage = pygame.image.load('bol.png')
+baddieImage = pygame.image.load('Bombe.png')
 
 # player
 class Player(pygame.sprite.Sprite):
@@ -44,6 +45,26 @@ class Player(pygame.sprite.Sprite):
 
 #nouvelle classe baddies
 
+class Baddie(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = baddieImage
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randrange(WIDTH) #le spawn est aléatoire
+        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
+        self.speedy = random.randrange(1,8) #vitesse des baddies
+
+        if self.rect.top > HEIGHT + 10 : #disparaitre quand ils arrivent en bas. quand un disparait un réaparait randomly
+            self.rect.x = random.randrange(WIDTH - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
+
+
+    def update(self):
+        self.rect.y += self.speedy #faire bouger de haut en bas
+
+
+
 # initialize pygame and create window
 pygame.init()
 pygame.mixer.init()
@@ -51,8 +72,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
+baddies = pygame.sprite.Group() # groupe des méchants
 player = Player()
 all_sprites.add(player)
+for i in range(8): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+    b = Baddie()
+    all_sprites.add(b)
+    baddies.add(b)
 
 # Game loop
 running = True
