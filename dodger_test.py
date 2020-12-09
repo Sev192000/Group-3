@@ -1,5 +1,6 @@
 import pygame, random, sys
 from pygame.locals import *
+import time
 
 
 WINDOWWIDTH = 600 #largeur fenêtre de jeu
@@ -39,43 +40,29 @@ def waitForPlayerToPressKey():
                     terminate()
                 return
 
-class HasHit:
-    def __init__(self, name,image):
-        self.image = image
-        self.name=name
-        self.rect = pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize)
+def playerHasHitBaddie(playerRect, baddies):
+    for b in baddies:
+        if playerRect.colliderect(b['rect']):
+            return True
+    return False
 
-    def playerHasHit(self, name):
-        for i in name:
-            if playerRect.colliderect(i[rect]):
-                return True
-        return False
+def playerHasHitGoodie(playerRect, goodies):
+    for g in goodies:
+        if playerRect.colliderect(g['rect']):
+            return True
+    return False
 
-
+def playerHasHitMush(playerRect, mushs):
+    for m in mushs:
+        if playerRect.colliderect(m['rect']):
+            return True
+    return False
 
 def drawText(text, font,surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
-
-
-    def addNewBaddie(self):
-        if not reverseCheat:
-            baddieAddCounter += 1
-        if baddieAddCounter == ADDNEWBADDIERATE:
-            baddieAddCounter = 0
-            baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
-            newBaddie = {'rect': pygame.Rect(random.randint(0, WINDOWWIDTH - baddieSize), 0 - baddieSize, baddieSize, baddieSize),
-                        'speed': random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
-                        'surface':pygame.transform.scale(baddieImage, (baddieSize, baddieSize)),
-                        }
-
-            baddies.append(newBaddie)
-
-
-
-
 
 # Set up pygame, the window, and the mouse cursor.
 pygame.init()
@@ -112,6 +99,7 @@ EndSmallCake = pygame.image.load('EndSmallCake.png')
 EndMediumCake = pygame.image.load('EndMediumCake.png')
 EndBigCake = pygame.image.load('EndBigCake.png')
 Instructions = pygame.image.load('Instructions.png')
+broccoli = pygame.image.load('broccoli.png')
 
 # Show instructions
 windowSurface.fill(BACKGROUNDCOLOR)
@@ -140,8 +128,11 @@ while True:
     MushAddcounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
-
+    timer = 0
     while True: # The game loop runs while the game part is playing.
+        timer = timer - 1
+        if timer < 0 :
+            slowCheat = False
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -309,9 +300,7 @@ while True:
         pygame.display.update()
 
         # Check if any of the baddies have hit the player.
-        if self.
-            self.rect.colliderect(player1.rect)
-                playerHasHitBaddie(playerRect, baddies):
+        if playerHasHitBaddie(playerRect, baddies):
             if score > topScore:
                 topScore = score # set new top score
             break
@@ -333,12 +322,13 @@ while True:
         # Check if any of the Mushs have hit the player.
 
         if playerHasHitMush(playerRect, mushs):
-            time = pygame.time.get_ticks()
-            while pygame.time.get_ticks() < 5000 + time:
-                slowCheat = True
+            timer = 100
+            slowCheat = True
+
 
             #pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
             #why isn't it working ?
+
 
 
         for m in mushs:
@@ -369,6 +359,8 @@ while True:
 
 
 #TODO bonus champignon
+
+#TODO ajuster la vitesse avec le temps
 
 #TODO Ajouter le compteur de vie??
 
