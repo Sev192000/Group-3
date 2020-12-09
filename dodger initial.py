@@ -52,7 +52,6 @@ class HasHit:
         return False
 
 
-
 def drawText(text, font,surface, x, y):
     textobj = font.render(text, 1, TEXTCOLOR)
     textrect = textobj.get_rect()
@@ -72,10 +71,6 @@ def drawText(text, font,surface, x, y):
                         }
 
             baddies.append(newBaddie)
-
-
-
-
 
 # Set up pygame, the window, and the mouse cursor.
 pygame.init()
@@ -309,9 +304,7 @@ while True:
         pygame.display.update()
 
         # Check if any of the baddies have hit the player.
-        if self.
-            self.rect.colliderect(player1.rect)
-                playerHasHitBaddie(playerRect, baddies):
+        if playerHasHitBaddie(playerRect, baddies):
             if score > topScore:
                 topScore = score # set new top score
             break
