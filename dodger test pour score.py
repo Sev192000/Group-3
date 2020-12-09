@@ -327,11 +327,6 @@ while True:
             slowCheat = True
 
 
-            #pygame.time.set_timer(slowCheat = True, 5000) # 5 sec
-            #why isn't it working ?
-
-
-
         for m in mushs:
             if playerRect.colliderect(m['rect']):
                 mushs.remove(m)
