@@ -113,7 +113,7 @@ pygame.display.update()
 waitForPlayerToPressKey()
 
 file = open('write.txt', 'w')
-topScore = 0
+topScore = file
 while True:
     # Set up the start of the game.
     baddies = []
@@ -312,6 +312,7 @@ while True:
             score = score + 1
             if score >= topScore:
                 topScore = score # set new top score
+                file.write('topScore') #ça doit la ?
 
         for g in goodies:
             if playerRect.colliderect(g['rect']):
@@ -353,7 +354,6 @@ while True:
     if score >= 10:
         windowSurface.blit(EndBigCake, (-52.5, 0))
     pygame.display.update()
-    file.write("topScore")
     waitForPlayerToPressKey()
 
     gameOverSound.stop()
