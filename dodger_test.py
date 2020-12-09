@@ -8,7 +8,7 @@ FPS = 60
 
 # define colors
 WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
+BACKGROUNDCOLOR = (200, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
@@ -53,7 +53,7 @@ while running:
     all_sprites.update()
 
     # Draw / render
-    screen.fill(BLACK)
+    screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
     # *after* drawing everything, flip the display
     pygame.display.flip()
