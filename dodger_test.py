@@ -163,16 +163,7 @@ while running:
     if hits_Baddie:
         pygame.mixer.music.stop()
         explosion_sound.play()
-        if score <= 5:
-            screen.blit(EndSmallCake, (-32, 0))
-            draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
-        if score > 5:
-            if score < 10:
-                screen.blit(EndMediumCake, (-32, 0))
-        if score >= 10:
-            screen.blit(EndBigCake, (-52.5, 0))
-
-        #running = False
+        running = False
 
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
