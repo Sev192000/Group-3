@@ -73,6 +73,16 @@ class Player(pygame.sprite.Sprite):
                     moveDown = False
 
 
+
+    if moveLeft and playerRect.left > 0:
+        self.rect.move_ip(-1 * PLAYERMOVERATE, 0)
+    if moveRight and playerRect.right < WINDOWWIDTH:
+        self.rect.move_ip(PLAYERMOVERATE, 0)
+    if moveUp and playerRect.top > 0:
+        self.rect.move_ip(0, -1 * PLAYERMOVERATE)
+    if moveDown and playerRect.bottom < WINDOWHEIGHT:
+        self.rect.move_ip(0, PLAYERMOVERATE)
+
 # initialize pygame and create window
 pygame.init()
 pygame.mixer.init()
