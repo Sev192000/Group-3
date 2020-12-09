@@ -72,8 +72,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
+baddies = pygame.sprite.Group() # groupe des méchants
 player = Player()
 all_sprites.add(player)
+for i in range (8): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+    b = Baddie()
+    all_sprites.add(b)
+    baddies.add(b)
 
 # Game loop
 running = True
