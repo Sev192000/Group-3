@@ -38,7 +38,6 @@ broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
 Winning = pygame.image.load('winning.png')
 
-
 # menu screen
 def show_go_screen():
     screen.blit(Instructions, (-15,0))
@@ -254,7 +253,7 @@ while running:
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
-        if score == 10:
+        if score >= 11:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
@@ -266,7 +265,7 @@ while running:
         m = Mush()
         all_sprites.add(m)
         mushs.add(m)
-        if score == 10:
+        if score >= 11:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
