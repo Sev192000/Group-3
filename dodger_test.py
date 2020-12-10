@@ -55,7 +55,7 @@ def show_go_screen():
                 return
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.QUIT
+            pygame.quit()
 
 # gameover screen
 def show_end_screen():
@@ -257,7 +257,7 @@ while running:
         score = score + 10
         m = Mush()
         all_sprites.add(m)
-        goodies.add(m)
+        mushs.add(m)
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
