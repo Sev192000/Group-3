@@ -129,6 +129,7 @@ class Baddie(pygame.sprite.Sprite):
         self.rect.x += self.speedx
         self.rect.y += self.speedy #faire bouger de haut en bas.
         # respawn the baddie when it goes offscreen.
+        Player.rect = self.image.get_rect()
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
