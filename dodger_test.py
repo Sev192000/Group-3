@@ -253,7 +253,7 @@ while running:
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
-        if score >= 11:
+        if score > 11:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
@@ -265,7 +265,7 @@ while running:
         m = Mush()
         all_sprites.add(m)
         mushs.add(m)
-        if score >= 11:
+        if score > 11:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
