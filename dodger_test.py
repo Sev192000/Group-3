@@ -48,7 +48,7 @@ def show_go_screen():
     while waiting:
         clock.tick(FPS)
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.K_ESCAPE:
                 pygame.quit()
             if event.type == pygame.KEYUP:
                 waiting = False
