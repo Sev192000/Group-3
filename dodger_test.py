@@ -261,7 +261,6 @@ while running:
     # Check if Player has hit Mush
     hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
     if hits_Mush:
-        score = score + 10
         m = Mush()
         all_sprites.add(m)
         mushs.add(m)
@@ -269,6 +268,7 @@ while running:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
+        score = score + 10
 
 
     # Draw / render
