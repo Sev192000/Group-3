@@ -68,8 +68,6 @@ def show_end_screen():
             screen.blit(EndBigCake, (-52.5, 0))
     if score >11 :
         screen.blit(Winning, (-32, 0))
-    if score > 11:
-        screen.blit(Winning, (-52.5, 0))
 
     pygame.display.flip()
     waiting = True
