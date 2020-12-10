@@ -66,6 +66,7 @@ def show_end_screen():
             screen.blit(EndMediumCake, (-32, 0))
     if score >= 10:
         screen.blit(EndBigCake, (-52.5, 0))
+
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -250,6 +251,10 @@ while running:
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
+        if score == 10:
+            game_over = True
+            pygame.mixer.music.stop()
+            show_end_screen()
 
     # Check if Player has hit Mush
     hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
@@ -258,11 +263,17 @@ while running:
         m = Mush()
         all_sprites.add(m)
         mushs.add(m)
+        if score == 10:
+            game_over = True
+            show_end_screen()
+            pygame.mixer.music.stop()
+
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
     draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
+
 
     # after drawing everything, flip the display
     pygame.display.flip()
