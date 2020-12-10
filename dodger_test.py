@@ -252,8 +252,8 @@ while running:
         all_sprites.add(g)
         goodies.add(g)
         if score == 10:
-            game_over = True
             pygame.mixer.music.stop()
+            game_over = True
             show_end_screen()
 
     # Check if Player has hit Mush
@@ -264,9 +264,9 @@ while running:
         all_sprites.add(m)
         mushs.add(m)
         if score == 10:
+            pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
-            pygame.mixer.music.stop()
 
 
     # Draw / render
