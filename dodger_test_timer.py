@@ -66,8 +66,6 @@ def show_end_screen():
     if score >7:
         if score < 10:
             screen.blit(EndBigCake, (-52.5, 0))
-    if score > 11:
-        screen.blit(Winning, (-52.5, 0))
 
     pygame.display.flip()
     waiting = True
@@ -268,7 +266,6 @@ while running:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
-        score = score + 10
 
 
     # Draw / render
