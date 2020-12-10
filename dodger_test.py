@@ -151,6 +151,25 @@ class Goodie(pygame.sprite.Sprite):
             self.speedy = random.randrange(1, 8)
             self.image = random.choice(self.GoodiesImageList)
 
+# new class Mushrooms
+class Mush (pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = mushroom
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
+        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
+        self.speedy = random.randrange(1,8) #vitesse des goodies
+
+    def update(self):
+        self.rect.y += self.speedy #faire bouger de haut en bas.
+        # respawn the goodie when it goes offscreen.
+        if self.rect.top > HEIGHT + 10:
+            self.rect.x = random.randrange(WIDTH - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
+            self.image = mushroom
+
 # initialize pygame and create window
 pygame.init()
 pygame.mixer.init()
@@ -179,6 +198,7 @@ while running:
         all_sprites = pygame.sprite.Group()
         baddies = pygame.sprite.Group()  # groupe des méchants
         goodies = pygame.sprite.Group()  # groupe des goodies
+        mushs = pygame.sprite.Group()
         player = Player()
         all_sprites.add(player)
         for i in range(5):  # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
@@ -189,6 +209,10 @@ while running:
             g = Goodie()
             all_sprites.add(g)
             goodies.add(g)
+        for j in range(3):
+            m = Mush()
+            all_sprites.add(m)
+            mushs.add(m)
 
         score = 0
 
@@ -226,6 +250,14 @@ while running:
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
+
+    # Check if Player has hit Mush
+    hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
+    if hits_Mush:
+        score = score + 10
+        m = Mush()
+        all_sprites.add(m)
+        goodies.add(m)
 
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
