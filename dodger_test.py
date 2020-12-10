@@ -37,11 +37,28 @@ Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
 
-# game over screen
+# menu screen
 def show_go_screen():
+    screen.fill(BACKGROUNDCOLOR)
+    draw_text(screen,"Welcome",64,WIDTH/2,HEIGHT/4)
+    draw_text(screen, "Pastry chef", 22, WIDTH/2, HEIGHT/2)
+    draw_text(screen, "PRESS A KEY TO BEGIN", 18, WIDTH/2, HEIGHT*3/4)
+    pygame.display.flip()
+    waiting = True
+    while waiting:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.KEYUP:
+                waiting = False
+
+# gameover screen
+def show_end_screen():
+    screen.fill(BACKGROUNDCOLOR)
     draw_text(screen,"Game over",64,WIDTH/2,HEIGHT/4)
     draw_text(screen, "You lost", 22, WIDTH/2, HEIGHT/2)
-    draw_text(screen, "PRESS A KEY TO BEGIN", 18, WIDTH/2, HEIGHT*3/4)
+    draw_text(screen, "PRESS A KEY TO START AGAIN", 18, WIDTH/2, HEIGHT*3/4)
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -184,6 +201,7 @@ while running:
         pygame.mixer.music.stop()
         explosion_sound.play()
         game_over = True
+        show_end_screen()
 
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
