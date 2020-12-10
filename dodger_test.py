@@ -73,9 +73,6 @@ def show_end_screen():
                     pygame.quit()
                 return
 
-
-
-
 # texte
 font_name = pygame.font.match_font('Berlin Sans FB')
 def draw_text(surf, text, size, x, y):
@@ -108,7 +105,6 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0: # left edge
             self.rect.left = 0
 
-
 #nouvelle classe baddies
 
 class Baddie(pygame.sprite.Sprite):
@@ -120,7 +116,6 @@ class Baddie(pygame.sprite.Sprite):
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
         self.speedy = random.randrange(1,8) #vitesse des baddies
         self.speedx = random.randrange(-3,3) # diagonal movement
-
 
     def update(self):
         self.rect.x += self.speedx
@@ -162,7 +157,6 @@ clock = pygame.time.Clock()
 background_music = pygame.mixer.music.load('VolDuBourdon.wav')
 explosion_sound = pygame.mixer.Sound('ExplosionSound.wav')
 
-
 # Game loop
 game_over = True
 running = True
@@ -195,8 +189,6 @@ while running:
 
     # keep loop running at the right speed
     clock.tick(FPS)
-    # Process input (events)
-
 
     # Update
     all_sprites.update()
@@ -235,11 +227,7 @@ while running:
     all_sprites.draw(screen)
     draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
 
-
     # after drawing everything, flip the display
     pygame.display.flip()
 
 pygame.quit()
-
-
-##
