@@ -70,8 +70,11 @@ def show_end_screen():
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 if event.type == pygame.QUIT: # Pressing ESC quits.
-                    pygame.quit()
+                    pygame.QUIT
                 return
+
+
+
 
 # texte
 font_name = pygame.font.match_font('Berlin Sans FB')
@@ -167,6 +170,10 @@ running = True
 show_go_screen()
 
 while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
     if game_over:
         game_over = False
         pygame.mixer.music.play(loops=-1)
@@ -189,10 +196,7 @@ while running:
     # keep loop running at the right speed
     clock.tick(FPS)
     # Process input (events)
-    for event in pygame.event.get():
-        # check for closing window
-        if event.type == pygame.QUIT:
-            running = False
+
 
     # Update
     all_sprites.update()
@@ -228,5 +232,6 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
+
 
 ##
