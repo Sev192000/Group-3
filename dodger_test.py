@@ -52,10 +52,13 @@ def show_go_screen():
 
 # gameover screen
 def show_end_screen():
-    screen.fill(BACKGROUNDCOLOR)
-    draw_text(screen,"Game over",64,WIDTH/2,HEIGHT/4)
-    draw_text(screen, "You lost", 22, WIDTH/2, HEIGHT/2)
-    draw_text(screen, "PRESS A KEY TO START AGAIN", 18, WIDTH/2, HEIGHT*3/4)
+    if score <= 5:
+        screen.blit(EndSmallCake, (-32, 0))
+    if score > 5:
+        if score < 10:
+            screen.blit(EndMediumCake, (-32, 0))
+    if score >= 10:
+        screen.blit(EndBigCake, (-52.5, 0))
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -206,7 +209,7 @@ while running:
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
     if hits_Goodie:
-        score += 1
+        score = score + 1
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
