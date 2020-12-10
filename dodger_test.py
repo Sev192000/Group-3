@@ -70,7 +70,7 @@ def show_end_screen():
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 if event.type == pygame.QUIT: # Pressing ESC quits.
-                    pygame.QUIT
+                    pygame.quit()
                 return
 
 
@@ -205,6 +205,14 @@ while running:
     keystate = pygame.key.get_pressed()
     if keystate[pygame.K_ESCAPE]:
         running = False
+
+    # mettre la  musique en pause
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_m:
+                pygame.mixer.music.pause()  # couper la musique
+            if event.key == pygame.K_n:
+                pygame.mixer.music.unpause()  # remettre la musique
 
     # Check if Player has hit Baddie
     hits_Baddie = pygame.sprite.spritecollide(player,baddies,False)
