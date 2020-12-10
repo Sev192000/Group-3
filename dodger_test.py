@@ -48,7 +48,7 @@ def show_go_screen():
             if event.type == pygame.QUIT:
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE: # Pressing ESC quits.
+                if event.type == pygame.QUIT: # Pressing ESC quits.
                     pygame.quit()
                 return
 
@@ -69,7 +69,7 @@ def show_end_screen():
             if event.type == pygame.QUIT:
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE: # Pressing ESC quits.
+                if event.type == pygame.QUIT: # Pressing ESC quits.
                     pygame.quit()
                 return
 
