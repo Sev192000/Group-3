@@ -45,10 +45,12 @@ def show_go_screen():
     while waiting:
         clock.tick(FPS)
         for event in pygame.event.get():
-            if event.type == pygame.K_ESCAPE:
+            if event.type == pygame.QUIT:
                 pygame.quit()
-            if event.type == pygame.KEYUP:
-                waiting = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE: # Pressing ESC quits.
+                    pygame.quit()
+                return
 
 # gameover screen
 def show_end_screen():
@@ -66,8 +68,10 @@ def show_end_screen():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-            if event.type == pygame.KEYUP:
-                waiting = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE: # Pressing ESC quits.
+                    pygame.quit()
+                return
 
 # texte
 font_name = pygame.font.match_font('Berlin Sans FB')
