@@ -249,7 +249,6 @@ while running:
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
     if hits_Goodie:
-        score = score + 1
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
@@ -257,6 +256,7 @@ while running:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
+        score = score + 1
 
     # Check if Player has hit Mush
     hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
