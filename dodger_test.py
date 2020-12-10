@@ -36,7 +36,7 @@ EndBigCake = pygame.image.load('EndBigCake.png')
 Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
-
+Winning = pygame.image.load('winning.png')
 
 
 # menu screen
