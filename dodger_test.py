@@ -39,10 +39,7 @@ GoodiesImageList = [chocolate,flour,milk,egg]
 
 # menu screen
 def show_go_screen():
-    screen.fill(BACKGROUNDCOLOR)
-    draw_text(screen,"Welcome",64,WIDTH/2,HEIGHT/4)
-    draw_text(screen, "Pastry chef", 22, WIDTH/2, HEIGHT/2)
-    draw_text(screen, "PRESS A KEY TO BEGIN", 18, WIDTH/2, HEIGHT*3/4)
+    screen.blit(HomeImage, (0,0))
     pygame.display.flip()
     waiting = True
     while waiting:
