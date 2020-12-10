@@ -154,7 +154,7 @@ clock = pygame.time.Clock()
 # set up sounds
 background_music = pygame.mixer.music.load('VolDuBourdon.wav')
 explosion_sound = pygame.mixer.Sound('ExplosionSound.wav')
-pygame.mixer.music.play(loops=-1)
+
 
 # Game loop
 game_over = True
@@ -163,6 +163,7 @@ while running:
     if game_over:
         show_go_screen()
         game_over = False
+        pygame.mixer.music.play(loops=-1)
         all_sprites = pygame.sprite.Group()
         baddies = pygame.sprite.Group()  # groupe des méchants
         goodies = pygame.sprite.Group()  # groupe des goodies
