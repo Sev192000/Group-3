@@ -41,7 +41,7 @@ GoodiesImageList = [chocolate,flour,milk,egg]
 
 # menu screen
 def show_go_screen():
-    screen.blit(Instructions, (0,0))
+    screen.blit(Instructions, (-15,0))
     pygame.display.flip()
     waiting = True
     while waiting:
