@@ -37,6 +37,21 @@ Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
 
+# game over screen
+def show_go_screen():
+    draw_text(screen,"Game over",64,WIDTH/2,HEIGHT/4)
+    draw_text(screen, "You lost", 22, WIDTH/2, HEIGHT/2)
+    draw_text(screen, "PRESS A KEY TO BEGIN", 18, WIDTH/2, HEIGHT*3/4)
+    pygame.display.flip()
+    waiting = True
+    while waiting:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.KEYUP:
+                waiting = False
+
 # texte
 font_name = pygame.font.match_font('Berlin Sans FB')
 def draw_text(surf, text, size, x, y):
@@ -118,21 +133,6 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
-all_sprites = pygame.sprite.Group()
-baddies = pygame.sprite.Group() # groupe des méchants
-goodies = pygame.sprite.Group() # groupe des goodies
-player = Player()
-all_sprites.add(player)
-for i in range(5): # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
-    b = Baddie()
-    all_sprites.add(b)
-    baddies.add(b)
-for n in range(5):
-    g = Goodie()
-    all_sprites.add(g)
-    goodies.add(g)
-
-score = 0
 
 # set up sounds
 background_music = pygame.mixer.music.load('VolDuBourdon.wav')
@@ -140,8 +140,28 @@ explosion_sound = pygame.mixer.Sound('ExplosionSound.wav')
 pygame.mixer.music.play(loops=-1)
 
 # Game loop
+game_over = True
 running = True
 while running:
+    if game_over:
+        show_go_screen()
+        game_over = False
+        all_sprites = pygame.sprite.Group()
+        baddies = pygame.sprite.Group()  # groupe des méchants
+        goodies = pygame.sprite.Group()  # groupe des goodies
+        player = Player()
+        all_sprites.add(player)
+        for i in range(5):  # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+            b = Baddie()
+            all_sprites.add(b)
+            baddies.add(b)
+        for n in range(5):
+            g = Goodie()
+            all_sprites.add(g)
+            goodies.add(g)
+
+        score = 0
+
     # keep loop running at the right speed
     clock.tick(FPS)
     # Process input (events)
@@ -163,7 +183,7 @@ while running:
     if hits_Baddie:
         pygame.mixer.music.stop()
         explosion_sound.play()
-        running = False
+        game_over = True
 
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
