@@ -37,9 +37,11 @@ Instructions = pygame.image.load('Instructions.png')
 broccoli = pygame.image.load('broccoli.png')
 GoodiesImageList = [chocolate,flour,milk,egg]
 
+
+
 # menu screen
 def show_go_screen():
-    screen.blit(HomeImage, (0,0))
+    screen.blit(Instructions, (0,0))
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -51,6 +53,9 @@ def show_go_screen():
                 if event.type == pygame.QUIT: # Pressing ESC quits.
                     pygame.quit()
                 return
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.QUIT
 
 # gameover screen
 def show_end_screen():
