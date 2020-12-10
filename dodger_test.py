@@ -159,9 +159,11 @@ explosion_sound = pygame.mixer.Sound('ExplosionSound.wav')
 # Game loop
 game_over = True
 running = True
+
+show_go_screen()
+
 while running:
     if game_over:
-        show_go_screen()
         game_over = False
         pygame.mixer.music.play(loops=-1)
         all_sprites = pygame.sprite.Group()

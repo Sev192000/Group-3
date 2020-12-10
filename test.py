@@ -44,7 +44,6 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0:  # left edge
             self.rect.left = 0
 
-
 # nouvelle classe baddies
 
 class Baddie(pygame.sprite.Sprite):
