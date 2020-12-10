@@ -212,7 +212,7 @@ while running:
             g = Goodie()
             all_sprites.add(g)
             goodies.add(g)
-        for j in range(3):
+        for j in range(1):
             m = Mush()
             all_sprites.add(m)
             mushs.add(m)
