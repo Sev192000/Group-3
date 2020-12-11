@@ -167,7 +167,7 @@ class Mush (pygame.sprite.Sprite):
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
         self.speedy = random.randrange(1, 8)  # vitesse des baddies
-        self.speedx = random.randrange(-3, 3)
+        self.speedx = random.randrange(-8, -1)
         self.speedy = random.randrange(1,8) #vitesse des goodies
         Mush.rect = self.rect
 
@@ -179,7 +179,7 @@ class Mush (pygame.sprite.Sprite):
         Mush.rect.x += dx * self.speedx
         Mush.rect.y += dy * self.speedy
         # respawn the goodie when it goes offscreen.
-        if self.rect.top > HEIGHT + 10:
+        if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
