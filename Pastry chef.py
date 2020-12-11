@@ -63,7 +63,7 @@ def show_end_screen():
             screen.fill(BACKGROUNDCOLOR)
             draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
             screen.blit(EndBigCake, (-52.5, 0))
-    if score >10 :
+    if score >49 :
         screen.fill(BACKGROUNDCOLOR)
         draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
         screen.blit(Winning, (-32, 0))
@@ -260,7 +260,7 @@ while running: # game loop
         all_sprites.add(g)
         goodies.add(g)
         score = score + 1 # updating score
-        if score > 10: # player wins
+        if score > 49: # player wins if its score is > 50
             pygame.mixer.music.stop() # stopping music
             game_over = True # start loop "if game over"
             show_end_screen() # show winning screen
@@ -272,7 +272,7 @@ while running: # game loop
         all_sprites.add(m)
         mushs.add(m)
         score = score + 10
-        if score > 10: # player wins
+        if score > 49: # player wins
             pygame.mixer.music.stop()
             show_end_screen()
             game_over = True
