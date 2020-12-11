@@ -46,17 +46,17 @@ def show_go_screen(): #sets the first screen of the game with the instructions
 
 # gameover screen
 def show_end_screen(): # sets the different ends possible and the different images
-    if score <= 5: # end with a bad score
+    if score <= 11: # end with a bad score
         screen.fill(BACKGROUNDCOLOR) # clears screen
         draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10) # draws the score
         screen.blit(EndSmallCake, (-32, 0))
-    if score > 5:
-        if score < 7:
+    if score > 11:
+        if score < 31:
             screen.fill(BACKGROUNDCOLOR)
             draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
             screen.blit(EndMediumCake, (-32, 0))
-    if score >7:
-        if score < 10:
+    if score >31:
+        if score < 49:
             screen.fill(BACKGROUNDCOLOR)
             draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
             screen.blit(EndBigCake, (-52.5, 0))
