@@ -193,24 +193,23 @@ clock = pygame.time.Clock()
 background_music = pygame.mixer.music.load('VolDuBourdon.wav')
 explosion_sound = pygame.mixer.Sound('ExplosionSound.wav')
 
-# Game loop
 game_over = True
 running = True
 
-show_go_screen()
+show_go_screen() # show instructions
 
-while running:
+while running: # game loop
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: # quit game if press esc key
             running = False
 
     if game_over:
         game_over = False
-        pygame.mixer.music.play(loops=-1)
+        pygame.mixer.music.play(loops=-1) # music loop
         all_sprites = pygame.sprite.Group()
-        baddies = pygame.sprite.Group()  # groupe des méchants
-        goodies = pygame.sprite.Group()  # groupe des goodies
-        mushs = pygame.sprite.Group()
+        baddies = pygame.sprite.Group()  # group of the bombs
+        goodies = pygame.sprite.Group()  # group of the food
+        mushs = pygame.sprite.Group() # group of the mushrooms
         player = Player()
         all_sprites.add(player)
         for i in range(5):  # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
