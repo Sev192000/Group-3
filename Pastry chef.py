@@ -202,18 +202,18 @@ while running: # game loop
         if event.type == pygame.QUIT: # quit game if press esc key
             running = False
 
-    if game_over:
+    if game_over: # defining game over
         game_over = False
         pygame.mixer.music.play(loops=-1) # music loop
-        all_sprites = pygame.sprite.Group()
+        all_sprites = pygame.sprite.Group() # creating group with all sprites
         baddies = pygame.sprite.Group()  # group of the bombs
         goodies = pygame.sprite.Group()  # group of the food
         mushs = pygame.sprite.Group() # group of the mushrooms
         player = Player()
         all_sprites.add(player)
-        for i in range(5):  # baddies updated automatiquement. maintenant dans all sprites on a le player et les baddies
+        for i in range(5):  # baddies updated automatically
             b = Baddie()
-            all_sprites.add(b)
+            all_sprites.add(b) # adding baddies to all sprites group
             baddies.add(b)
         for n in range(5):
             g = Goodie()
@@ -224,20 +224,20 @@ while running: # game loop
             all_sprites.add(m)
             mushs.add(m)
 
-        score = 0
+        score = 0 # defining beginning score
 
     # keep loop running at the right speed
     clock.tick(FPS)
 
     # Update
-    all_sprites.update()
+    all_sprites.update() # updating all sprites
 
     # Pressing ESC quits.
     keystate = pygame.key.get_pressed()
     if keystate[pygame.K_ESCAPE]:
         running = False
 
-    # mettre la  musique en pause
+    # Sounds pause and play
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_m:
@@ -245,34 +245,34 @@ while running: # game loop
             if event.key == pygame.K_n:
                 pygame.mixer.music.unpause()  # remettre la musique
 
-    # Check if Player has hit Baddie
+    # Check if Player has hit Baddie (bomb)
     hits_Baddie = pygame.sprite.spritecollide(player,baddies,False)
     if hits_Baddie:
-        pygame.mixer.music.stop()
-        explosion_sound.play()
-        show_end_screen()
-        game_over = True
+        pygame.mixer.music.stop() # stop music
+        explosion_sound.play() # start game over sound
+        show_end_screen() # show game over screen
+        game_over = True # start loop "if game over"
 
-    # Check if Player has hit Goodie
+    # Check if Player has hit Goodie (food)
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
     if hits_Goodie:
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
-        score = score + 1
-        if score > 10:
-            pygame.mixer.music.stop()
-            game_over = True
-            show_end_screen()
+        score = score + 1 # updating score
+        if score > 10: # player wins
+            pygame.mixer.music.stop() # stopping music
+            game_over = True # start loop "if game over"
+            show_end_screen() # show winning screen
 
-    # Check if Player has hit Mush
+    # Check if Player has hit Mushroom
     hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
     if hits_Mush:
         m = Mush()
         all_sprites.add(m)
         mushs.add(m)
         score = score + 10
-        if score > 10:
+        if score > 10: # player wins
             pygame.mixer.music.stop()
             show_end_screen()
             game_over = True
@@ -280,9 +280,9 @@ while running: # game loop
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
-    draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
+    draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10) # draw score on screem
 
     # after drawing everything, flip the display
     pygame.display.flip()
 
-pygame.quit()
+pygame.quit() # end game
