@@ -172,14 +172,14 @@ class Mush (pygame.sprite.Sprite):
         Mush.rect = self.rect
 
     def update(self):
-        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dx, dy = Player.rect.x + Mush.rect.x, Player.rect.y + Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
         Mush.rect.x += dx * self.speedx
         Mush.rect.y += dy * self.speedy
         # respawn the goodie when it goes offscreen.
-        if self.rect.top > HEIGHT + 10:
+        if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
