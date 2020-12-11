@@ -68,6 +68,7 @@ def show_end_screen():
         if score < 10:
             screen.blit(EndBigCake, (-52.5, 0))
     if score >10 :
+        screen.fill(BACKGROUNDCOLOR)
         draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
         screen.blit(Winning, (-32, 0))
 
