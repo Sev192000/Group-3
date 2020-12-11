@@ -5,10 +5,10 @@ import math #needed for the ai
 
 WIDTH = 600 # size of the screen
 HEIGHT = 600
-FPS = 60
+FPS = 60 # speed of the game
 
 # define colors
-BACKGROUNDCOLOR = (200, 255, 255)
+BACKGROUNDCOLOR = (200, 255, 255) # light blue
 BLACK = (0,0,0)
 
 # nos images
@@ -30,11 +30,11 @@ GoodiesImageList = [chocolate,flour,milk,egg]
 Winning = pygame.image.load('winning.png')
 
 # menu screen
-def show_go_screen():
+def show_go_screen(): #sets the first screen of the game with the instructions
     screen.blit(Instructions, (-15,0))
     pygame.display.flip()
     waiting = True
-    while waiting:
+    while waiting: # waits for the player to press a key to start or quit
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -43,15 +43,12 @@ def show_go_screen():
                 if event.type == pygame.QUIT: # Pressing ESC quits.
                     pygame.quit()
                 return
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
 
 # gameover screen
-def show_end_screen():
-    if score <= 5:
-        screen.fill(BACKGROUNDCOLOR)
-        draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
+def show_end_screen(): # sets the different ends possible and the different images
+    if score <= 5: # end with a bad score
+        screen.fill(BACKGROUNDCOLOR) # clears screen
+        draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10) # draws the score
         screen.blit(EndSmallCake, (-32, 0))
     if score > 5:
         if score < 7:
@@ -68,7 +65,7 @@ def show_end_screen():
         draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
         screen.blit(Winning, (-32, 0))
 
-    pygame.display.flip()
+    pygame.display.flip() # changes the screen
     waiting = True
     while waiting:
         clock.tick(FPS)
@@ -82,14 +79,14 @@ def show_end_screen():
 
 # texte
 font_name = pygame.font.match_font('Berlin Sans FB')
-def draw_text(surf, text, size, x, y):
-    font = pygame.font.Font(font_name,size)
+def draw_text(surf, text, size, x, y): # useful to write some text
+    font = pygame.font.Font(font_name,size) # police
     text_surface=font.render(text,True,BLACK)
     text_rect = text_surface.get_rect()
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
 
-# player
+#new class player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -99,7 +96,7 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0 # speed of the player
         Player.rect = self.rect
 
-    def update(self):
+    def update(self): #function definition
         self.speedx = 0
         keystate = pygame.key.get_pressed() #movements when pressing keys
         if keystate[pygame.K_LEFT]:
@@ -113,21 +110,20 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0: # left edge
             self.rect.left = 0
 
-#nouvelle classe baddies
-
+#new class Baddies
 class Baddie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = baddieImage
+        self.image = baddieImage #image definition
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1,8) #vitesse des baddies
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
+        self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
+        self.speedy = random.randrange(1,8) #baddies' speed
         self.speedx = random.randrange(-3,3) # diagonal movement
 
     def update(self):
         self.rect.x += self.speedx
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        self.rect.y += self.speedy #move up to down
         # respawn the baddie when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
@@ -138,15 +134,15 @@ class Baddie(pygame.sprite.Sprite):
 class Goodie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.GoodiesImageList = [chocolate,flour,milk,egg,cherry]
+        self.GoodiesImageList = [chocolate,flour,milk,egg,cherry] #add images
         self.image = random.choice(self.GoodiesImageList)
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1,8) #vitesse des goodies
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
+        self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
+        self.speedy = random.randrange(1,8) #goodies' speed
 
     def update(self):
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        self.rect.y += self.speedy #move up to down
         # respawn the goodie when it goes offscreen.
         if self.rect.top > HEIGHT + 10:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
@@ -158,23 +154,22 @@ class Goodie(pygame.sprite.Sprite):
 class Mush (pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = mushroom
+        self.image = mushroom #image definition
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1, 8)  # vitesse des baddies
-        self.speedx = random.randrange(-8, -1)
-        self.speedy = random.randrange(1,8) #vitesse des goodies
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
+        self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
+        self.speedy = random.randrange(1, 8)  #mushrooms' speed
+        self.speedx = random.randrange(-8, -1) #mushrooms' movement
         Mush.rect = self.rect
 
     def update(self):
-        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  #Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
         Mush.rect.x += dx * self.speedx
         Mush.rect.y += dy * self.speedy
-        # respawn the goodie when it goes offscreen.
+        # respawn the mushroom when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
@@ -184,7 +179,7 @@ class Mush (pygame.sprite.Sprite):
 # initialize pygame and create window
 pygame.init()
 pygame.mixer.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT)) #screen size
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
