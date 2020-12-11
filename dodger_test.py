@@ -137,15 +137,6 @@ class Baddie(pygame.sprite.Sprite):
             self.speedy = random.randrange(1, 8)
 
 
-    def move_towards_player(self, Player):
-        dx, dy = Player.rect.x - Baddie.rect.x, Player.rect.y - Baddie.rect.y  # Find direction vector (dx, dy) between enemy and player.
-        dist = math.hypot(dx, dy)
-        dx, dy = dx / dist, dy / dist  # Normalize.
-        # Move along this normalized vector towards the player at current speed.
-        Baddie.rect.x += dx * self.speedx
-        Baddie.rect.y += dy * self.speedy
-
-
 
 # new class Goodies
 class Goodie(pygame.sprite.Sprite):

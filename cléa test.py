@@ -126,24 +126,15 @@ class Baddie(pygame.sprite.Sprite):
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
         self.speedy = random.randrange(1,8) #vitesse des baddies
         self.speedx = random.randrange(-3,3) # diagonal movement
-        Baddie.rect = self.rect
 
     def update(self):
-        dx, dy = Player.rect.x - Baddie.rect.x, Player.rect.y - Baddie.rect.y  # Find direction vector (dx, dy) between enemy and player.
-        dist = math.hypot(dx, dy)
-        dx, dy = dx / dist, dy / dist  # Normalize.
-        # Move along this normalized vector towards the player at current speed.
-        Baddie.rect.x += dx * self.speedx
-        Baddie.rect.y += dy * self.speedy
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy #faire bouger de haut en bas.
         # respawn the baddie when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
-
-
-    #def move_towards_player(self, Player):
-
 
 
 
@@ -175,10 +166,18 @@ class Mush (pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
+        self.speedy = random.randrange(1, 8)  # vitesse des baddies
+        self.speedx = random.randrange(-3, 3)
         self.speedy = random.randrange(1,8) #vitesse des goodies
+        Mush.rect = self.rect
 
     def update(self):
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dist = math.hypot(dx, dy)
+        dx, dy = dx / dist, dy / dist  # Normalize.
+        # Move along this normalized vector towards the player at current speed.
+        Mush.rect.x += dx * self.speedx
+        Mush.rect.y += dy * self.speedy
         # respawn the goodie when it goes offscreen.
         if self.rect.top > HEIGHT + 10:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
@@ -294,4 +293,3 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
-
