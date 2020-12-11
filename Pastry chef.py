@@ -137,15 +137,15 @@ class Baddie(pygame.sprite.Sprite):
 class Goodie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.GoodiesImageList = [chocolate,flour,milk,egg,cherry]
+        self.GoodiesImageList = [chocolate,flour,milk,egg,cherry] #add images
         self.image = random.choice(self.GoodiesImageList)
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1,8) #vitesse des goodies
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
+        self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
+        self.speedy = random.randrange(1,8) #goodies' speed
 
     def update(self):
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        self.rect.y += self.speedy #move up to down
         # respawn the goodie when it goes offscreen.
         if self.rect.top > HEIGHT + 10:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
@@ -157,23 +157,22 @@ class Goodie(pygame.sprite.Sprite):
 class Mush (pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = mushroom
+        self.image = mushroom #image definition
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1, 8)  # vitesse des baddies
-        self.speedx = random.randrange(-8, -1)
-        self.speedy = random.randrange(1,8) #vitesse des goodies
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
+        self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
+        self.speedy = random.randrange(1, 8)  #mushrooms' speed
+        self.speedx = random.randrange(-8, -1) #mushrooms' movement
         Mush.rect = self.rect
 
     def update(self):
-        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  #Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
         Mush.rect.x += dx * self.speedx
         Mush.rect.y += dy * self.speedy
-        # respawn the goodie when it goes offscreen.
+        # respawn the mushroom when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
@@ -183,7 +182,7 @@ class Mush (pygame.sprite.Sprite):
 # initialize pygame and create window
 pygame.init()
 pygame.mixer.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT)) #screen size
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
