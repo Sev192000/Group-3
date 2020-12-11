@@ -172,7 +172,7 @@ class Mush (pygame.sprite.Sprite):
         Mush.rect = self.rect
 
     def update(self):
-        dx, dy = Player.rect.x + Mush.rect.x, Player.rect.y + Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
