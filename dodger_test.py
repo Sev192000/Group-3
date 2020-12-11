@@ -90,7 +90,6 @@ def draw_text(surf, text, size, x, y):
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
 
-
 # player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -100,7 +99,6 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
         self.speedx = 0 # speed of the player
         Player.rect = self.rect
-
 
     def update(self):
         self.speedx = 0
@@ -115,12 +113,6 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = WIDTH
         if self.rect.left < 0: # left edge
             self.rect.left = 0
-
-
-
-
-
-
 
 #nouvelle classe baddies
 
@@ -143,8 +135,6 @@ class Baddie(pygame.sprite.Sprite):
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
 
-
-
 # new class Goodies
 class Goodie(pygame.sprite.Sprite):
     def __init__(self):
@@ -164,7 +154,6 @@ class Goodie(pygame.sprite.Sprite):
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
             self.image = random.choice(self.GoodiesImageList)
-
 
 # new class Mushrooms
 class Mush (pygame.sprite.Sprite):
@@ -192,9 +181,6 @@ class Mush (pygame.sprite.Sprite):
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
             self.image = mushroom
-
-
-
 
 # initialize pygame and create window
 pygame.init()
@@ -269,7 +255,6 @@ while running:
         show_end_screen()
         game_over = True
 
-
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
     if hits_Goodie:
@@ -281,7 +266,6 @@ while running:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
-
 
     # Check if Player has hit Mush
     hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
@@ -295,13 +279,10 @@ while running:
             show_end_screen()
             game_over = True
 
-
-
     # Draw / render
     screen.fill(BACKGROUNDCOLOR)
     all_sprites.draw(screen)
     draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
-
 
     # after drawing everything, flip the display
     pygame.display.flip()
