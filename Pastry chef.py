@@ -1,9 +1,9 @@
 # Pygame template - skeleton for a new pygame project
 import pygame
 import random
-import math
+import math #needed for the ai
 
-WIDTH = 600
+WIDTH = 600 # size of the screen
 HEIGHT = 600
 FPS = 60
 
@@ -22,7 +22,6 @@ milk = pygame.image.load('milk.png')
 egg = pygame.image.load('egg.png')
 mushroom = pygame.image.load('mushroom.png')
 pastryGirl = pygame.image.load('pastrygirl.png')
-HomeImage = pygame.image.load('imagedb.png')
 EndSmallCake = pygame.image.load('EndSmallCake.png')
 EndMediumCake = pygame.image.load('EndMediumCake.png')
 EndBigCake = pygame.image.load('EndBigCake.png')
