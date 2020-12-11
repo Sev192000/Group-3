@@ -5,10 +5,10 @@ import math #needed for the ai
 
 WIDTH = 600 # size of the screen
 HEIGHT = 600
-FPS = 60
+FPS = 60 # speed of the game
 
 # define colors
-BACKGROUNDCOLOR = (200, 255, 255)
+BACKGROUNDCOLOR = (200, 255, 255) # light blue
 BLACK = (0,0,0)
 
 # nos images
@@ -30,11 +30,11 @@ GoodiesImageList = [chocolate,flour,milk,egg]
 Winning = pygame.image.load('winning.png')
 
 # menu screen
-def show_go_screen():
+def show_go_screen(): #sets the first screen of the game with the instructions
     screen.blit(Instructions, (-15,0))
     pygame.display.flip()
     waiting = True
-    while waiting:
+    while waiting: # waits for the player to press a key to start or quit
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -43,15 +43,12 @@ def show_go_screen():
                 if event.type == pygame.QUIT: # Pressing ESC quits.
                     pygame.quit()
                 return
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
 
 # gameover screen
-def show_end_screen():
-    if score <= 5:
-        screen.fill(BACKGROUNDCOLOR)
-        draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
+def show_end_screen(): # sets the different ends possible and the different images
+    if score <= 5: # end with a bad score
+        screen.fill(BACKGROUNDCOLOR) # clears screen
+        draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10) # draws the score
         screen.blit(EndSmallCake, (-32, 0))
     if score > 5:
         if score < 7:
@@ -63,12 +60,12 @@ def show_end_screen():
             screen.fill(BACKGROUNDCOLOR)
             draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
             screen.blit(EndBigCake, (-52.5, 0))
-    if score >10 :
+    if score >10 : # end screen when you won the game
         screen.fill(BACKGROUNDCOLOR)
         draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
         screen.blit(Winning, (-32, 0))
 
-    pygame.display.flip()
+    pygame.display.flip() # changes the screen
     waiting = True
     while waiting:
         clock.tick(FPS)
@@ -82,8 +79,8 @@ def show_end_screen():
 
 # texte
 font_name = pygame.font.match_font('Berlin Sans FB')
-def draw_text(surf, text, size, x, y):
-    font = pygame.font.Font(font_name,size)
+def draw_text(surf, text, size, x, y): # useful to write some text
+    font = pygame.font.Font(font_name,size) # police
     text_surface=font.render(text,True,BLACK)
     text_rect = text_surface.get_rect()
     text_rect.topleft = (x,y)
