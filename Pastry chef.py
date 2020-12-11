@@ -159,7 +159,7 @@ class Mush (pygame.sprite.Sprite):
         self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
         self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
         self.speedy = random.randrange(1, 8)  #mushrooms' speed
-        self.speedx = random.randrange(-8, -1) #mushrooms' movement
+        self.speedx = random.randrange(-5, -3) #mushrooms' movement
         Mush.rect = self.rect
 
     def update(self):
