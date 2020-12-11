@@ -126,11 +126,6 @@ class Player(pygame.sprite.Sprite):
             self.rect.left = 0
 
 
-
-
-
-
-
 #nouvelle classe baddies
 
 class Baddie(pygame.sprite.Sprite):
@@ -183,9 +178,8 @@ class Mush (pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1, 8)  # vitesse des baddies
-        self.speedx = random.randrange(-8, -1)
-        self.speedy = random.randrange(1,8) #vitesse des goodies
+        self.speedx = random.randrange(-3, -1)
+        self.speedy = random.randrange(1,8) #vitesse des Mushs
         Mush.rect = self.rect
 
     def update(self):
