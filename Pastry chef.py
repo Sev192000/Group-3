@@ -90,7 +90,7 @@ def draw_text(surf, text, size, x, y):
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
 
-# player
+#new class player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -100,7 +100,7 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0 # speed of the player
         Player.rect = self.rect
 
-    def update(self):
+    def update(self): #function definition
         self.speedx = 0
         keystate = pygame.key.get_pressed() #movements when pressing keys
         if keystate[pygame.K_LEFT]:
@@ -114,21 +114,20 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0: # left edge
             self.rect.left = 0
 
-#nouvelle classe baddies
-
+#new class Baddies
 class Baddie(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = baddieImage
+        self.image = baddieImage #image definition
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
-        self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
-        self.speedy = random.randrange(1,8) #vitesse des baddies
+        self.rect.x = random.randrange(WIDTH - self.rect.width) #spawning is random
+        self.rect.y = random.randrange(-100, -40)  #random so they don't go to the same place
+        self.speedy = random.randrange(1,8) #baddies' speed
         self.speedx = random.randrange(-3,3) # diagonal movement
 
     def update(self):
         self.rect.x += self.speedx
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        self.rect.y += self.speedy #move up to down
         # respawn the baddie when it goes offscreen.
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
