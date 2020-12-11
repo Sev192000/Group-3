@@ -99,6 +99,7 @@ def draw_text(surf, text, size, x, y):
     text_rect.topleft = (x,y)
     surf.blit(text_surface, text_rect)
 
+
 # player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -107,6 +108,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
         self.speedx = 0 # speed of the player
+        Player.rect = self.rect
 
 
     def update(self):
@@ -122,6 +124,12 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = WIDTH
         if self.rect.left < 0: # left edge
             self.rect.left = 0
+
+
+
+
+
+
 
 #nouvelle classe baddies
 
@@ -166,6 +174,7 @@ class Goodie(pygame.sprite.Sprite):
             self.speedy = random.randrange(1, 8)
             self.image = random.choice(self.GoodiesImageList)
 
+
 # new class Mushrooms
 class Mush (pygame.sprite.Sprite):
     def __init__(self):
@@ -174,16 +183,27 @@ class Mush (pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width) #le spawn est aléatoire
         self.rect.y = random.randrange(-100, -40)  #random pour pas quils arrivent tous au meme endroit
+        self.speedy = random.randrange(1, 8)  # vitesse des baddies
+        self.speedx = random.randrange(-8, -1)
         self.speedy = random.randrange(1,8) #vitesse des goodies
+        Mush.rect = self.rect
 
     def update(self):
-        self.rect.y += self.speedy #faire bouger de haut en bas.
+        dx, dy = Player.rect.x - Mush.rect.x, Player.rect.y - Mush.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dist = math.hypot(dx, dy)
+        dx, dy = dx / dist, dy / dist  # Normalize.
+        # Move along this normalized vector towards the player at current speed.
+        Mush.rect.x += dx * self.speedx
+        Mush.rect.y += dy * self.speedy
         # respawn the goodie when it goes offscreen.
-        if self.rect.top > HEIGHT + 10:
+        if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
             self.image = mushroom
+
+
+
 
 # initialize pygame and create window
 pygame.init()
