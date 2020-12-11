@@ -1,6 +1,7 @@
 # Pygame template - skeleton for a new pygame project
 import pygame
 import random
+import math
 
 WIDTH = 600
 HEIGHT = 600
@@ -99,6 +100,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = (WIDTH / 2, HEIGHT - 50)
         self.speedx = 0 # speed of the player
 
+
     def update(self):
         self.speedx = 0
         keystate = pygame.key.get_pressed() #movements when pressing keys
@@ -129,7 +131,6 @@ class Baddie(pygame.sprite.Sprite):
         self.rect.x += self.speedx
         self.rect.y += self.speedy #faire bouger de haut en bas.
         # respawn the baddie when it goes offscreen.
-        Player.rect = self.image.get_rect()
         if self.rect.top > HEIGHT + 10 or self.rect.left < -25 or self.rect.right > WIDTH + 20:
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
@@ -137,13 +138,13 @@ class Baddie(pygame.sprite.Sprite):
 
 
     def move_towards_player(self, Player):
-        dx, dy = Player.rect.x - self.rect.x, Player.rect.y - self.rect.y  # Find direction vector (dx, dy) between enemy and player.
+        dx, dy = Player.rect.x - Baddie.rect.x, Player.rect.y - Baddie.rect.y  # Find direction vector (dx, dy) between enemy and player.
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
-        self.rect.x += dx * self.speedx
-        self.rect.y += dy * self.speedy
-        # pas de message d'erreur mais ça fonctionne pas... SOS
+        Baddie.rect.x += dx * self.speedx
+        Baddie.rect.y += dy * self.speedy
+
 
 
 # new class Goodies
