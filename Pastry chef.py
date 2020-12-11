@@ -5,7 +5,7 @@ import math #needed for the ai
 
 WIDTH = 600 # size of the screen
 HEIGHT = 600
-FPS = 60 # speed of the game
+FPS = 60 #frames per second
 
 # define colors
 BACKGROUNDCOLOR = (200, 255, 255) # light blue
