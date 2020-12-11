@@ -66,7 +66,8 @@ def show_end_screen():
     if score >7:
         if score < 10:
             screen.blit(EndBigCake, (-52.5, 0))
-    if score >11 :
+    if score >10 :
+        draw_text(screen, 'Score: %s' % (str(score)), 18, 20, 10)
         screen.blit(Winning, (-32, 0))
 
     pygame.display.flip()
@@ -255,8 +256,9 @@ while running:
     if hits_Baddie:
         pygame.mixer.music.stop()
         explosion_sound.play()
-        game_over = True
         show_end_screen()
+        game_over = True
+
 
     # Check if Player has hit Goodie
     hits_Goodie = pygame.sprite.spritecollide(player, goodies, True)
@@ -264,11 +266,12 @@ while running:
         g = Goodie()
         all_sprites.add(g)
         goodies.add(g)
-        if score > 11:
+        score = score + 1
+        if score > 10:
             pygame.mixer.music.stop()
             game_over = True
             show_end_screen()
-        score = score + 1
+
 
     # Check if Player has hit Mush
     hits_Mush = pygame.sprite.spritecollide(player, mushs, True)
@@ -276,11 +279,12 @@ while running:
         m = Mush()
         all_sprites.add(m)
         mushs.add(m)
-        if score > 11:
-            pygame.mixer.music.stop()
-            game_over = True
-            show_end_screen()
         score = score + 10
+        if score > 10:
+            pygame.mixer.music.stop()
+            show_end_screen()
+            game_over = True
+
 
 
     # Draw / render
